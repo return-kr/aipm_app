@@ -1,3 +1,4 @@
+import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/data/city_model.dart';
 import 'package:aipm_app/app/data/service_model.dart';
 import 'package:aipm_app/app/modules/home/views/custom_appbar.dart';
@@ -9,6 +10,7 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +71,7 @@ class HeroSection extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 1320),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -236,13 +238,83 @@ class HeroSection extends StatelessWidget {
 class QuoteForm extends StatelessWidget {
   const QuoteForm({super.key});
 
+  Widget _input({
+    required IconData icon,
+    required String label,
+    required String hint,
+    IconData? suffix,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 46,
+          width: 46,
+          decoration: BoxDecoration(
+            color: const Color(0xffF5F7FB),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(icon, color: const Color(0xff5D6B82), size: 22),
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 46,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: hint,
+                    hintStyle: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.grey,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 12,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    suffixIcon: suffix != null
+                        ? Icon(suffix, size: 18, color: Colors.grey)
+                        : null,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey.shade300),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide: BorderSide(
+                        color: Color(0xff083A86),
+                        width: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         /// Header
         Container(
-          height: 95,
+          height: 85,
           padding: const EdgeInsets.symmetric(horizontal: 28),
           decoration: const BoxDecoration(
             color: Color(0xff083A86),
@@ -274,7 +346,7 @@ class QuoteForm extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 34,
+                    fontSize: AppFontSize.fs24,
                   ),
                 ),
               ),
@@ -359,76 +431,6 @@ class QuoteForm extends StatelessWidget {
       ],
     );
   }
-
-  Widget _input({
-    required IconData icon,
-    required String label,
-    required String hint,
-    IconData? suffix,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          height: 46,
-          width: 46,
-          decoration: BoxDecoration(
-            color: const Color(0xffF5F7FB),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Icon(icon, color: const Color(0xff5D6B82), size: 22),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 8),
-              SizedBox(
-                height: 46,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: hint,
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey,
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 12,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    suffixIcon: suffix != null
-                        ? Icon(suffix, size: 18, color: Colors.grey)
-                        : null,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(color: Colors.grey.shade300),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                      borderSide: BorderSide(
-                        color: Color(0xff083A86),
-                        width: 1.5,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
 }
 
 class AboutSection extends StatelessWidget {
@@ -477,7 +479,7 @@ class AboutSection extends StatelessWidget {
                     const Text(
                       "Your Trusted Moving Partner",
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: AppFontSize.fs38,
                         fontWeight: FontWeight.w800,
                         color: Color(0xff161616),
                       ),
@@ -488,7 +490,7 @@ class AboutSection extends StatelessWidget {
                     Text(
                       "ALL INDIA PACKERS & MOVERS is a professional relocation company providing reliable packing and moving services throughout India. We specialize in safe transportation of household goods, office equipment, furniture, electronics, and vehicles.",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: AppFontSize.fs18,
                         height: 1.8,
                         color: Colors.grey.shade800,
                       ),
@@ -499,7 +501,7 @@ class AboutSection extends StatelessWidget {
                     Text(
                       "Our experienced team uses quality packing materials and modern handling techniques to ensure your belongings reach their destination safely and on time.",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: AppFontSize.fs18,
                         height: 1.8,
                         color: Colors.grey.shade800,
                       ),
@@ -603,7 +605,10 @@ class WhyChooseUsCard extends StatelessWidget {
         children: [
           const Text(
             "Why Choose Us?",
-            style: TextStyle(fontSize: 38, fontWeight: FontWeight.w800),
+            style: TextStyle(
+              fontSize: AppFontSize.fs38,
+              fontWeight: FontWeight.w800,
+            ),
           ),
 
           const SizedBox(height: 30),
@@ -633,7 +638,7 @@ class WhyChooseUsCard extends StatelessWidget {
                     child: Text(
                       e,
                       style: const TextStyle(
-                        fontSize: 19,
+                        fontSize: AppFontSize.fs18,
                         fontWeight: FontWeight.w500,
                         color: Color(0xff333333),
                       ),
@@ -650,9 +655,9 @@ class WhyChooseUsCard extends StatelessWidget {
 }
 
 class FeatureItem extends StatelessWidget {
-  final String title;
-
   const FeatureItem(this.title, {super.key});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -713,7 +718,7 @@ class ServicesSection extends StatelessWidget {
                 "Complete Moving Solutions",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 48,
+                  fontSize: AppFontSize.fs38,
                   fontWeight: FontWeight.w800,
                   color: Color(0xff141414),
                 ),
@@ -744,9 +749,9 @@ class ServicesSection extends StatelessWidget {
 }
 
 class ServiceCard extends StatelessWidget {
-  final ServiceModel service;
-
   const ServiceCard({super.key, required this.service});
+
+  final ServiceModel service;
 
   @override
   Widget build(BuildContext context) {
@@ -800,7 +805,7 @@ class ServiceCard extends StatelessWidget {
                           child: Text(
                             service.title,
                             style: const TextStyle(
-                              fontSize: 26,
+                              fontSize: AppFontSize.fs22,
                               fontWeight: FontWeight.w800,
                               color: Color(0xff141414),
                               height: 1.2,
@@ -815,8 +820,8 @@ class ServiceCard extends StatelessWidget {
                     Text(
                       service.description,
                       style: TextStyle(
-                        fontSize: 17,
-                        height: 1.7,
+                        fontSize: AppFontSize.fs16,
+                        // height: 1.7,
                         color: Colors.grey.shade700,
                       ),
                     ),
@@ -868,7 +873,7 @@ class ServiceCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(width: 18),
+          const SizedBox(width: 5),
 
           /// RIGHT IMAGE
           Expanded(
@@ -916,7 +921,7 @@ class ServiceAreasSection extends StatelessWidget {
                 "Packers and Movers Services Available In",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 48,
+                  fontSize: AppFontSize.fs38,
                   fontWeight: FontWeight.w800,
                   color: Color(0xff141414),
                 ),
@@ -980,9 +985,9 @@ class ServiceAreasSection extends StatelessWidget {
 }
 
 class CityCard extends StatelessWidget {
-  final CityModel city;
-
   const CityCard({super.key, required this.city});
+
+  final CityModel city;
 
   @override
   Widget build(BuildContext context) {
@@ -1036,7 +1041,7 @@ class CityCard extends StatelessWidget {
                       city.name,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 17,
+                        fontSize: AppFontSize.fs16,
                         fontWeight: FontWeight.w700,
                         color: Color(0xff202020),
                       ),
@@ -1055,76 +1060,11 @@ class CityCard extends StatelessWidget {
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xff07275B),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 45),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1320),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(flex: 3, child: _companyInfo()),
-
-                    _divider(),
-
-                    Expanded(flex: 2, child: _quickLinks()),
-
-                    _divider(),
-
-                    Expanded(flex: 2, child: _services()),
-
-                    _divider(),
-
-                    Expanded(flex: 3, child: _contactUs()),
-
-                    _divider(),
-
-                    Expanded(flex: 3, child: _businessHours()),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          Container(height: 1, color: Colors.white.withOpacity(.08)),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1320),
-                child: Row(
-                  children: const [
-                    Text(
-                      "© 2024 ALL INDIA PACKERS & MOVERS. All Rights Reserved.",
-                      style: TextStyle(color: Colors.white70, fontSize: 15),
-                    ),
-                    Spacer(),
-                    Text(
-                      "Designed for Safe & Secure Moving",
-                      style: TextStyle(color: Colors.white70, fontSize: 15),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _divider() {
     return Container(
       width: 1,
       height: 260,
-      margin: const EdgeInsets.symmetric(horizontal: 28),
+      margin: const EdgeInsets.symmetric(horizontal: 18),
       color: Colors.white.withOpacity(.08),
     );
   }
@@ -1145,7 +1085,7 @@ class FooterSection extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 28,
+                    fontSize: AppFontSize.fs18,
                   ),
                 ),
                 Text(
@@ -1164,7 +1104,7 @@ class FooterSection extends StatelessWidget {
 
         const Text(
           "Your trusted partner for safe, fast\nand reliable moving services\nacross India.",
-          style: TextStyle(color: Colors.white70, fontSize: 18, height: 1.8),
+          style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14, height: 1.8),
         ),
 
         const SizedBox(height: 30),
@@ -1213,16 +1153,16 @@ class FooterSection extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 26,
+            fontSize: AppFontSize.fs18,
           ),
         ),
 
-        const SizedBox(height: 28),
+        const SizedBox(height: 12),
 
         _contact(Icons.call, "+91 9883632477"),
-        const SizedBox(height: 18),
+        const SizedBox(height: 5),
         _contact(Icons.email_outlined, "info@example.com"),
-        const SizedBox(height: 18),
+        const SizedBox(height: 5),
         _contact(Icons.location_on_outlined, "Siliguri, West Bengal, India"),
       ],
     );
@@ -1237,28 +1177,28 @@ class FooterSection extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 26,
+            fontSize: AppFontSize.fs18,
           ),
         ),
 
-        const SizedBox(height: 28),
+        const SizedBox(height: 5),
 
         const Text(
           "Mon - Sun",
-          style: TextStyle(color: Colors.white70, fontSize: 18),
+          style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14),
         ),
 
-        const SizedBox(height: 12),
+        const SizedBox(height: 5),
 
         const Text(
           "8:00 AM - 8:00 PM",
-          style: TextStyle(color: Colors.white70, fontSize: 18),
+          style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14),
         ),
 
         const SizedBox(height: 28),
 
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
             color: const Color(0xffFDB913),
             borderRadius: BorderRadius.circular(14),
@@ -1303,19 +1243,19 @@ class FooterSection extends StatelessWidget {
           title,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 26,
+            fontSize: AppFontSize.fs18,
             fontWeight: FontWeight.bold,
           ),
         ),
 
-        const SizedBox(height: 28),
+        const SizedBox(height: 12),
 
         ...items.map(
           (e) => Padding(
-            padding: const EdgeInsets.only(bottom: 14),
+            padding: const EdgeInsets.only(bottom: 5),
             child: Text(
               e,
-              style: const TextStyle(color: Colors.white70, fontSize: 18),
+              style: const TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14),
             ),
           ),
         ),
@@ -1328,14 +1268,14 @@ class FooterSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Icon(Icons.circle, size: 0),
-        Icon(icon, color: const Color(0xffFDB913), size: 24),
+        Icon(icon, color: const Color(0xffFDB913), size: 18),
         const SizedBox(width: 14),
         Expanded(
           child: Text(
             text,
             style: const TextStyle(
               color: Colors.white70,
-              fontSize: 18,
+              fontSize: AppFontSize.fs14,
               height: 1.5,
             ),
           ),
@@ -1348,9 +1288,74 @@ class FooterSection extends StatelessWidget {
     return Container(
       width: 42,
       height: 42,
-      margin: const EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       child: Icon(icon, color: Colors.white, size: 22),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xff07275B),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1320),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(flex: 3, child: _companyInfo()),
+
+                    _divider(),
+
+                    Expanded(flex: 2, child: _quickLinks()),
+
+                    _divider(),
+
+                    Expanded(flex: 2, child: _services()),
+
+                    _divider(),
+
+                    Expanded(flex: 3, child: _contactUs()),
+
+                    _divider(),
+
+                    Expanded(flex: 3, child: _businessHours()),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          Container(height: 1, color: Colors.white.withOpacity(.08)),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1320),
+                child: Row(
+                  children: const [
+                    Text(
+                      "© 2024 ALL INDIA PACKERS & MOVERS. All Rights Reserved.",
+                      style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs12),
+                    ),
+                    Spacer(),
+                    Text(
+                      "Designed for Safe & Secure Moving",
+                      style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs12),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
