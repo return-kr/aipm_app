@@ -3,6 +3,7 @@ import 'package:aipm_app/app/data/city_model.dart';
 import 'package:aipm_app/app/data/service_model.dart';
 import 'package:aipm_app/app/modules/home/views/custom_appbar.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -72,7 +73,7 @@ class HeroSection extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 1320),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -92,7 +93,7 @@ class HeroSection extends StatelessWidget {
                               color: const Color(0xffFDB913),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Text(
+                            child: DynamicText(
                               "ALL INDIA PACKERS & MOVERS",
                               style: AppTextStyles.barlow700(
                                 fontSize: AppFontSize.fs18,
@@ -102,7 +103,7 @@ class HeroSection extends StatelessWidget {
 
                           const SizedBox(height: 28),
 
-                          Text(
+                          DynamicText(
                             "Trusted Packers &\nMovers Across India",
                             style: AppTextStyles.oswald800(
                               fontSize: AppFontSize.fs44,
@@ -114,7 +115,7 @@ class HeroSection extends StatelessWidget {
 
                           SizedBox(
                             width: 650,
-                            child: Text(
+                            child: DynamicText(
                               "Professional household shifting, office relocation, vehicle transportation, packing, unpacking, loading, and unloading services with safe handling and timely delivery.",
                               style: AppTextStyles.barlow300(
                                 fontSize: AppFontSize.fs24,
@@ -170,7 +171,7 @@ class HeroSection extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    DynamicText(
                                       "Call Now:",
                                       style: AppTextStyles.barlow400(
                                         fontSize: AppFontSize.fs22,
@@ -178,7 +179,7 @@ class HeroSection extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(height: 5),
-                                    Text(
+                                    DynamicText(
                                       "+91 988 363 2477",
                                       style: AppTextStyles.barlow600(
                                         fontSize: AppFontSize.fs28,
@@ -258,7 +259,7 @@ class QuoteForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              DynamicText(
                 label,
                 style: AppTextStyles.barlow700(
                   fontSize: AppFontSize.fs16,
@@ -342,7 +343,7 @@ class QuoteForm extends StatelessWidget {
               ),
               const SizedBox(width: 18),
               Expanded(
-                child: Text(
+                child: DynamicText(
                   "Get a Free Moving Quote",
                   style: AppTextStyles.oswald500(
                     fontSize: AppFontSize.fs30,
@@ -415,7 +416,7 @@ class QuoteForm extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text(
+                    child: DynamicText(
                       "SUBMIT REQUEST",
                       style: AppTextStyles.barlow700(
                         fontSize: AppFontSize.fs18,
@@ -441,7 +442,7 @@ class AboutSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 90),
+      padding: const EdgeInsets.symmetric(vertical: 90, horizontal: 20),
       child: Center(
         child: SizedBox(
           width: 1320,
@@ -456,7 +457,7 @@ class AboutSection extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Text(
+                        DynamicText(
                           "ABOUT US",
                           style: AppTextStyles.barlow700(
                             fontSize: AppFontSize.fs16,
@@ -474,7 +475,7 @@ class AboutSection extends StatelessWidget {
 
                     const SizedBox(height: 18),
 
-                    Text(
+                    DynamicText(
                       "Your Trusted Moving Partner",
                       style: AppTextStyles.oswald800(
                         fontSize: AppFontSize.fs38,
@@ -484,7 +485,7 @@ class AboutSection extends StatelessWidget {
 
                     const SizedBox(height: 28),
 
-                    Text(
+                    DynamicText(
                       "ALL INDIA PACKERS & MOVERS is a professional relocation company providing reliable packing and moving services throughout India. We specialize in safe transportation of household goods, office equipment, furniture, electronics, and vehicles.",
                       style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
@@ -494,7 +495,7 @@ class AboutSection extends StatelessWidget {
 
                     const SizedBox(height: 22),
 
-                    Text(
+                    DynamicText(
                       "Our experienced team uses quality packing materials and modern handling techniques to ensure your belongings reach their destination safely and on time.",
                       style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
@@ -519,7 +520,7 @@ class AboutSection extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
+                            DynamicText(
                               "LEARN MORE ABOUT US",
                               style: AppTextStyles.barlow500(
                                 fontSize: AppFontSize.fs16,
@@ -598,7 +599,7 @@ class WhyChooseUsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          DynamicText(
             "Why Choose Us?",
             style: AppTextStyles.oswald800(
               fontSize: AppFontSize.fs38,
@@ -630,7 +631,7 @@ class WhyChooseUsCard extends StatelessWidget {
                   const SizedBox(width: 18),
 
                   Expanded(
-                    child: Text(
+                    child: DynamicText(
                       e,
                       style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
@@ -668,7 +669,7 @@ class FeatureItem extends StatelessWidget {
           child: const Icon(Icons.check, color: Colors.black, size: 20),
         ),
         const SizedBox(width: 12),
-        Text(
+        DynamicText(
           title,
           style: AppTextStyles.barlow600(
             fontSize: AppFontSize.fs18,
@@ -688,14 +689,14 @@ class ServicesSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: const Color(0xffFAFBFD),
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1320),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              DynamicText(
                 "OUR SERVICES",
                 style: AppTextStyles.barlow700(
                   fontSize: AppFontSize.fs16,
@@ -705,7 +706,7 @@ class ServicesSection extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              Text(
+              DynamicText(
                 "Complete Moving Solutions",
                 textAlign: TextAlign.center,
                 style: AppTextStyles.oswald800(
@@ -792,7 +793,7 @@ class ServiceCard extends StatelessWidget {
                         const SizedBox(width: 14),
 
                         Expanded(
-                          child: Text(
+                          child: DynamicText(
                             service.title,
                             style: AppTextStyles.oswald600(
                               fontSize: AppFontSize.fs22,
@@ -805,7 +806,7 @@ class ServiceCard extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    Text(
+                    DynamicText(
                       service.description,
                       style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs16,
@@ -815,7 +816,7 @@ class ServiceCard extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    Text(
+                    DynamicText(
                       "Included:",
                       style: AppTextStyles.barlow800(
                         fontSize: AppFontSize.fs18,
@@ -841,7 +842,7 @@ class ServiceCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 10),
                             Expanded(
-                              child: Text(
+                              child: DynamicText(
                                 feature,
                                 style: AppTextStyles.barlow500(
                                   fontSize: AppFontSize.fs16,
@@ -885,13 +886,13 @@ class ServiceAreasSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1320),
           child: Column(
             children: [
-              Text(
+              DynamicText(
                 "SERVICE AREAS",
                 style: AppTextStyles.barlow700(
                   fontSize: AppFontSize.fs16,
@@ -901,7 +902,7 @@ class ServiceAreasSection extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              Text(
+              DynamicText(
                 "Packers and Movers Services Available In",
                 textAlign: TextAlign.center,
                 style: AppTextStyles.oswald800(
@@ -941,7 +942,7 @@ class ServiceAreasSection extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
+                    DynamicText(
                       "AND MANY MORE CITIES ACROSS INDIA",
                       style: AppTextStyles.barlow700(
                         fontSize: AppFontSize.fs16,
@@ -1018,7 +1019,7 @@ class CityCard extends StatelessWidget {
                   const SizedBox(width: 4),
 
                   Flexible(
-                    child: Text(
+                    child: DynamicText(
                       city.name,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.barlow700(
@@ -1060,14 +1061,14 @@ class FooterSection extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                DynamicText(
                   "ALL INDIA",
                   style: AppTextStyles.oswald800(
                     fontSize: AppFontSize.fs20,
                     color: Colors.white,
                   ),
                 ),
-                Text(
+                DynamicText(
                   "PACKERS & MOVERS",
                   style: AppTextStyles.barlow600(
                     fontSize: AppFontSize.fs16,
@@ -1081,7 +1082,7 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 28),
 
-        Text(
+        DynamicText(
           "Your trusted partner for safe, fast\nand reliable moving services\nacross India.",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
@@ -1130,7 +1131,7 @@ class FooterSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        DynamicText(
           "Contact Us",
           style: AppTextStyles.oswald700(
             fontSize: AppFontSize.fs19,
@@ -1153,7 +1154,7 @@ class FooterSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        DynamicText(
           "Business Hours",
           style: AppTextStyles.oswald700(
             fontSize: AppFontSize.fs19,
@@ -1163,7 +1164,7 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 5),
 
-        Text(
+        DynamicText(
           "Mon - Sun",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
@@ -1173,7 +1174,7 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 5),
 
-        Text(
+        DynamicText(
           "8:00 AM - 8:00 PM",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
@@ -1196,7 +1197,7 @@ class FooterSection extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  DynamicText(
                     "Call Now",
                     style: AppTextStyles.barlow600(
                       fontSize: AppFontSize.fs16,
@@ -1204,7 +1205,7 @@ class FooterSection extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 4),
-                  Text(
+                  DynamicText(
                     "+91 988 363 2477",
                     style: AppTextStyles.barlow700(
                       fontSize: AppFontSize.fs20,
@@ -1224,7 +1225,7 @@ class FooterSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        DynamicText(
           title,
           style: AppTextStyles.oswald700(
             fontSize: AppFontSize.fs19,
@@ -1237,7 +1238,7 @@ class FooterSection extends StatelessWidget {
         ...items.map(
           (e) => Padding(
             padding: const EdgeInsets.only(bottom: 5),
-            child: Text(
+            child: DynamicText(
               e,
               style: AppTextStyles.barlow300(
                 fontSize: AppFontSize.fs15,
@@ -1258,7 +1259,7 @@ class FooterSection extends StatelessWidget {
         Icon(icon, color: const Color(0xffFDB913), size: 18),
         const SizedBox(width: 14),
         Expanded(
-          child: Text(
+          child: DynamicText(
             text,
             style: AppTextStyles.barlow300(
               fontSize: AppFontSize.fs15,
@@ -1326,7 +1327,7 @@ class FooterSection extends StatelessWidget {
                 constraints: const BoxConstraints(maxWidth: 1320),
                 child: Row(
                   children: [
-                    Text(
+                    DynamicText(
                       "© 2024 ALL INDIA PACKERS & MOVERS. All Rights Reserved.",
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
@@ -1334,7 +1335,7 @@ class FooterSection extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    Text(
+                    DynamicText(
                       "Designed for Safe & Secure Moving",
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
