@@ -2,6 +2,7 @@ import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/data/city_model.dart';
 import 'package:aipm_app/app/data/service_model.dart';
 import 'package:aipm_app/app/modules/home/views/custom_appbar.dart';
+import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -54,9 +55,9 @@ class HeroSection extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    const Color(0xff07224D).withOpacity(.92),
-                    const Color(0xff07224D).withOpacity(.75),
-                    Colors.black.withOpacity(.45),
+                    const Color(0xff07224D).withValues(alpha: .92),
+                    const Color(0xff07224D).withValues(alpha: .75),
+                    Colors.black.withValues(alpha: .45),
                     Colors.transparent,
                   ],
                   begin: Alignment.centerLeft,
@@ -91,25 +92,21 @@ class HeroSection extends StatelessWidget {
                               color: const Color(0xffFDB913),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: const Text(
+                            child: Text(
                               "ALL INDIA PACKERS & MOVERS",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black87,
+                              style: AppTextStyles.barlow700(
+                                fontSize: AppFontSize.fs18,
                               ),
                             ),
                           ),
 
                           const SizedBox(height: 28),
 
-                          const Text(
+                          Text(
                             "Trusted Packers &\nMovers Across India",
-                            style: TextStyle(
+                            style: AppTextStyles.oswald800(
+                              fontSize: AppFontSize.fs44,
                               color: Colors.white,
-                              fontSize: 48,
-                              height: 1.08,
-                              fontWeight: FontWeight.w800,
                             ),
                           ),
 
@@ -119,10 +116,9 @@ class HeroSection extends StatelessWidget {
                             width: 650,
                             child: Text(
                               "Professional household shifting, office relocation, vehicle transportation, packing, unpacking, loading, and unloading services with safe handling and timely delivery.",
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(.9),
-                                fontSize: 20,
-                                height: 1.6,
+                              style: AppTextStyles.barlow300(
+                                fontSize: AppFontSize.fs24,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -153,7 +149,9 @@ class HeroSection extends StatelessWidget {
                                 width: 2,
                               ),
                               borderRadius: BorderRadius.circular(16),
-                              color: const Color(0xff0A2A63).withOpacity(.55),
+                              color: const Color(
+                                0xff0A2A63,
+                              ).withValues(alpha: .55),
                             ),
                             child: Row(
                               children: [
@@ -171,21 +169,20 @@ class HeroSection extends StatelessWidget {
 
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children: [
                                     Text(
                                       "Call Now:",
-                                      style: TextStyle(
-                                        color: Colors.white70,
-                                        fontSize: 20,
+                                      style: AppTextStyles.barlow400(
+                                        fontSize: AppFontSize.fs22,
+                                        color: Colors.white,
                                       ),
                                     ),
                                     SizedBox(height: 5),
                                     Text(
-                                      "+91 9883632477",
-                                      style: TextStyle(
+                                      "+91 988 363 2477",
+                                      style: AppTextStyles.barlow600(
+                                        fontSize: AppFontSize.fs28,
                                         color: Colors.white,
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ],
@@ -212,7 +209,7 @@ class HeroSection extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(.25),
+                                color: Colors.black.withValues(alpha: .25),
                                 blurRadius: 25,
                                 offset: const Offset(0, 15),
                               ),
@@ -263,20 +260,24 @@ class QuoteForm extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
+                style: AppTextStyles.barlow700(
+                  fontSize: AppFontSize.fs16,
+                  color: Colors.black87,
                 ),
               ),
               const SizedBox(height: 8),
               SizedBox(
                 height: 46,
                 child: TextField(
+                  style: AppTextStyles.barlow600(
+                    fontSize: AppFontSize.fs18,
+                    color: Colors.black87,
+                  ),
                   decoration: InputDecoration(
                     hintText: hint,
-                    hintStyle: const TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey,
+                    hintStyle: AppTextStyles.barlow500(
+                      fontSize: AppFontSize.fs16,
+                      color: Colors.grey.shade500,
                     ),
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 14,
@@ -329,7 +330,7 @@ class QuoteForm extends StatelessWidget {
                 height: 52,
                 width: 52,
                 decoration: BoxDecoration(
-                  color: const Color(0xffFDB913).withOpacity(.15),
+                  color: const Color(0xffFDB913).withValues(alpha: .15),
                   shape: BoxShape.circle,
                   border: Border.all(color: const Color(0xffFDB913), width: 2),
                 ),
@@ -340,13 +341,12 @@ class QuoteForm extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 18),
-              const Expanded(
+              Expanded(
                 child: Text(
                   "Get a Free Moving Quote",
-                  style: TextStyle(
+                  style: AppTextStyles.oswald500(
+                    fontSize: AppFontSize.fs30,
                     color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: AppFontSize.fs24,
                   ),
                 ),
               ),
@@ -415,11 +415,11 @@ class QuoteForm extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       "SUBMIT REQUEST",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 17,
+                      style: AppTextStyles.barlow700(
+                        fontSize: AppFontSize.fs18,
+                        color: Colors.black87,
                       ),
                     ),
                   ),
@@ -456,13 +456,11 @@ class AboutSection extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           "ABOUT US",
-                          style: TextStyle(
-                            color: Color(0xff0B4AA2),
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1,
-                            fontSize: 14,
+                          style: AppTextStyles.barlow700(
+                            fontSize: AppFontSize.fs16,
+                            color: Colors.blue.shade800,
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -476,12 +474,11 @@ class AboutSection extends StatelessWidget {
 
                     const SizedBox(height: 18),
 
-                    const Text(
+                    Text(
                       "Your Trusted Moving Partner",
-                      style: TextStyle(
+                      style: AppTextStyles.oswald800(
                         fontSize: AppFontSize.fs38,
-                        fontWeight: FontWeight.w800,
-                        color: Color(0xff161616),
+                        color: Colors.black87,
                       ),
                     ),
 
@@ -489,10 +486,9 @@ class AboutSection extends StatelessWidget {
 
                     Text(
                       "ALL INDIA PACKERS & MOVERS is a professional relocation company providing reliable packing and moving services throughout India. We specialize in safe transportation of household goods, office equipment, furniture, electronics, and vehicles.",
-                      style: TextStyle(
+                      style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
-                        height: 1.8,
-                        color: Colors.grey.shade800,
+                        color: Colors.black87,
                       ),
                     ),
 
@@ -500,9 +496,8 @@ class AboutSection extends StatelessWidget {
 
                     Text(
                       "Our experienced team uses quality packing materials and modern handling techniques to ensure your belongings reach their destination safely and on time.",
-                      style: TextStyle(
+                      style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
-                        height: 1.8,
                         color: Colors.grey.shade800,
                       ),
                     ),
@@ -521,14 +516,14 @@ class AboutSection extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {},
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               "LEARN MORE ABOUT US",
-                              style: TextStyle(
+                              style: AppTextStyles.barlow500(
+                                fontSize: AppFontSize.fs16,
                                 color: Colors.white,
-                                fontWeight: FontWeight.w700,
                               ),
                             ),
                             SizedBox(width: 12),
@@ -594,7 +589,7 @@ class WhyChooseUsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(.12),
+            color: Colors.grey.withValues(alpha: .12),
             blurRadius: 25,
             offset: const Offset(0, 12),
           ),
@@ -603,11 +598,11 @@ class WhyChooseUsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             "Why Choose Us?",
-            style: TextStyle(
+            style: AppTextStyles.oswald800(
               fontSize: AppFontSize.fs38,
-              fontWeight: FontWeight.w800,
+              color: Colors.black87,
             ),
           ),
 
@@ -637,10 +632,9 @@ class WhyChooseUsCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       e,
-                      style: const TextStyle(
+                      style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff333333),
+                        color: Colors.black87,
                       ),
                     ),
                   ),
@@ -676,10 +670,9 @@ class FeatureItem extends StatelessWidget {
         const SizedBox(width: 12),
         Text(
           title,
-          style: const TextStyle(
+          style: AppTextStyles.barlow600(
+            fontSize: AppFontSize.fs18,
             color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
           ),
         ),
       ],
@@ -702,25 +695,22 @@ class ServicesSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 "OUR SERVICES",
-                style: TextStyle(
-                  color: Color(0xff0B4AA2),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1,
+                style: AppTextStyles.barlow700(
+                  fontSize: AppFontSize.fs16,
+                  color: Colors.blue.shade800,
                 ),
               ),
 
               const SizedBox(height: 10),
 
-              const Text(
+              Text(
                 "Complete Moving Solutions",
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: AppTextStyles.oswald800(
                   fontSize: AppFontSize.fs38,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xff141414),
+                  color: Colors.black87,
                 ),
               ),
 
@@ -763,7 +753,7 @@ class ServiceCard extends StatelessWidget {
         border: Border.all(color: const Color(0xffECECEC)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(.05),
+            color: Colors.black.withValues(alpha: .05),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -804,12 +794,10 @@ class ServiceCard extends StatelessWidget {
                         Expanded(
                           child: Text(
                             service.title,
-                            style: const TextStyle(
+                            style: AppTextStyles.oswald600(
                               fontSize: AppFontSize.fs22,
-                              fontWeight: FontWeight.w800,
-                              color: Color(0xff141414),
-                              height: 1.2,
-                            ),
+                              color: Colors.black87,
+                            ).copyWith(letterSpacing: .5),
                           ),
                         ),
                       ],
@@ -819,20 +807,19 @@ class ServiceCard extends StatelessWidget {
 
                     Text(
                       service.description,
-                      style: TextStyle(
+                      style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs16,
-                        // height: 1.7,
-                        color: Colors.grey.shade700,
+                        color: Colors.grey.shade800,
                       ),
                     ),
 
                     const SizedBox(height: 20),
 
-                    const Text(
+                    Text(
                       "Included:",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
+                      style: AppTextStyles.barlow800(
+                        fontSize: AppFontSize.fs18,
+                        color: Colors.black87,
                       ),
                     ),
 
@@ -856,10 +843,9 @@ class ServiceCard extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 feature,
-                                style: TextStyle(
-                                  fontSize: 16,
+                                style: AppTextStyles.barlow500(
+                                  fontSize: AppFontSize.fs16,
                                   color: Colors.grey.shade800,
-                                  height: 1.4,
                                 ),
                               ),
                             ),
@@ -905,25 +891,22 @@ class ServiceAreasSection extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 1320),
           child: Column(
             children: [
-              const Text(
+              Text(
                 "SERVICE AREAS",
-                style: TextStyle(
-                  color: Color(0xff0B4AA2),
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1,
+                style: AppTextStyles.barlow700(
+                  fontSize: AppFontSize.fs16,
+                  color: Colors.blue.shade800,
                 ),
               ),
 
               const SizedBox(height: 10),
 
-              const Text(
+              Text(
                 "Packers and Movers Services Available In",
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: AppTextStyles.oswald800(
                   fontSize: AppFontSize.fs38,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xff141414),
+                  color: Colors.black87,
                 ),
               ),
 
@@ -955,16 +938,14 @@ class ServiceAreasSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       "AND MANY MORE CITIES ACROSS INDIA",
-                      style: TextStyle(
-                        color: Color(0xff141414),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 15,
-                        letterSpacing: .3,
+                      style: AppTextStyles.barlow700(
+                        fontSize: AppFontSize.fs16,
+                        color: Colors.black87,
                       ),
                     ),
                     SizedBox(width: 10),
@@ -1001,7 +982,7 @@ class CityCard extends StatelessWidget {
           border: Border.all(color: const Color(0xffE7EAF0)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(.05),
+              color: Colors.black.withValues(alpha: .05),
               blurRadius: 12,
               offset: const Offset(0, 5),
             ),
@@ -1031,7 +1012,7 @@ class CityCard extends StatelessWidget {
                   const Icon(
                     Icons.location_on_outlined,
                     color: Color(0xff0B3F91),
-                    size: 18,
+                    size: 20,
                   ),
 
                   const SizedBox(width: 4),
@@ -1040,10 +1021,9 @@ class CityCard extends StatelessWidget {
                     child: Text(
                       city.name,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: AppFontSize.fs16,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff202020),
+                      style: AppTextStyles.barlow700(
+                        fontSize: AppFontSize.fs18,
+                        color: Colors.black87,
                       ),
                     ),
                   ),
@@ -1065,7 +1045,7 @@ class FooterSection extends StatelessWidget {
       width: 1,
       height: 260,
       margin: const EdgeInsets.symmetric(horizontal: 18),
-      color: Colors.white.withOpacity(.08),
+      color: Colors.white.withValues(alpha: .08),
     );
   }
 
@@ -1077,22 +1057,21 @@ class FooterSection extends StatelessWidget {
           children: [
             Image.network("https://picsum.photos/60", width: 55, height: 55),
             const SizedBox(width: 10),
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "ALL INDIA",
-                  style: TextStyle(
+                  style: AppTextStyles.oswald800(
+                    fontSize: AppFontSize.fs20,
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: AppFontSize.fs18,
                   ),
                 ),
                 Text(
                   "PACKERS & MOVERS",
-                  style: TextStyle(
+                  style: AppTextStyles.barlow600(
+                    fontSize: AppFontSize.fs16,
                     color: Color(0xffFDB913),
-                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
@@ -1102,9 +1081,12 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 28),
 
-        const Text(
+        Text(
           "Your trusted partner for safe, fast\nand reliable moving services\nacross India.",
-          style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14, height: 1.8),
+          style: AppTextStyles.barlow300(
+            fontSize: AppFontSize.fs15,
+            color: Colors.white,
+          ),
         ),
 
         const SizedBox(height: 30),
@@ -1148,18 +1130,17 @@ class FooterSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Contact Us",
-          style: TextStyle(
+          style: AppTextStyles.oswald700(
+            fontSize: AppFontSize.fs19,
             color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: AppFontSize.fs18,
           ),
         ),
 
         const SizedBox(height: 12),
 
-        _contact(Icons.call, "+91 9883632477"),
+        _contact(Icons.call, "+91 988 363 2477"),
         const SizedBox(height: 5),
         _contact(Icons.email_outlined, "info@example.com"),
         const SizedBox(height: 5),
@@ -1172,27 +1153,32 @@ class FooterSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Business Hours",
-          style: TextStyle(
+          style: AppTextStyles.oswald700(
+            fontSize: AppFontSize.fs19,
             color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: AppFontSize.fs18,
           ),
         ),
 
         const SizedBox(height: 5),
 
-        const Text(
+        Text(
           "Mon - Sun",
-          style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14),
+          style: AppTextStyles.barlow300(
+            fontSize: AppFontSize.fs15,
+            color: Colors.white,
+          ),
         ),
 
         const SizedBox(height: 5),
 
-        const Text(
+        Text(
           "8:00 AM - 8:00 PM",
-          style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14),
+          style: AppTextStyles.barlow300(
+            fontSize: AppFontSize.fs15,
+            color: Colors.white,
+          ),
         ),
 
         const SizedBox(height: 28),
@@ -1203,7 +1189,7 @@ class FooterSection extends StatelessWidget {
             color: const Color(0xffFDB913),
             borderRadius: BorderRadius.circular(14),
           ),
-          child: const Row(
+          child: Row(
             children: [
               Icon(Icons.call, size: 28, color: Color(0xff07275B)),
               SizedBox(width: 16),
@@ -1212,17 +1198,16 @@ class FooterSection extends StatelessWidget {
                 children: [
                   Text(
                     "Call Now",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
+                    style: AppTextStyles.barlow600(
+                      fontSize: AppFontSize.fs16,
                       color: Color(0xff07275B),
                     ),
                   ),
                   SizedBox(height: 4),
                   Text(
-                    "+91 9883632477",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                    "+91 988 363 2477",
+                    style: AppTextStyles.barlow700(
+                      fontSize: AppFontSize.fs20,
                       color: Color(0xff07275B),
                     ),
                   ),
@@ -1241,10 +1226,9 @@ class FooterSection extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: AppTextStyles.oswald700(
+            fontSize: AppFontSize.fs19,
             color: Colors.white,
-            fontSize: AppFontSize.fs18,
-            fontWeight: FontWeight.bold,
           ),
         ),
 
@@ -1255,7 +1239,10 @@ class FooterSection extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 5),
             child: Text(
               e,
-              style: const TextStyle(color: Colors.white70, fontSize: AppFontSize.fs14),
+              style: AppTextStyles.barlow300(
+                fontSize: AppFontSize.fs15,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
@@ -1273,10 +1260,9 @@ class FooterSection extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: AppFontSize.fs14,
-              height: 1.5,
+            style: AppTextStyles.barlow300(
+              fontSize: AppFontSize.fs15,
+              color: Colors.white,
             ),
           ),
         ),
@@ -1331,7 +1317,7 @@ class FooterSection extends StatelessWidget {
             ),
           ),
 
-          Container(height: 1, color: Colors.white.withOpacity(.08)),
+          Container(height: 1, color: Colors.white.withValues(alpha: .08)),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
@@ -1339,15 +1325,21 @@ class FooterSection extends StatelessWidget {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 1320),
                 child: Row(
-                  children: const [
+                  children: [
                     Text(
                       "© 2024 ALL INDIA PACKERS & MOVERS. All Rights Reserved.",
-                      style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs12),
+                      style: AppTextStyles.barlow300(
+                        fontSize: AppFontSize.fs12,
+                        color: Colors.white,
+                      ),
                     ),
                     Spacer(),
                     Text(
                       "Designed for Safe & Secure Moving",
-                      style: TextStyle(color: Colors.white70, fontSize: AppFontSize.fs12),
+                      style: AppTextStyles.barlow300(
+                        fontSize: AppFontSize.fs12,
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),

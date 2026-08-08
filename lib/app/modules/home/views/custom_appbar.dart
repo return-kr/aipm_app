@@ -1,3 +1,5 @@
+import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -30,25 +32,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     "ALL INDIA",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w800,
-                      color: Color(0xff123C8E),
-                      height: 1,
-                    ),
+                    style: AppTextStyles.oswald800(fontSize: AppFontSize.fs24),
                   ),
                   SizedBox(height: 3),
                   Text(
                     "PACKERS & MOVERS",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xffF15A29),
-                      letterSpacing: .4,
-                    ),
+                    style: AppTextStyles.barlow600(fontSize: AppFontSize.fs18),
                   ),
                 ],
               ),
@@ -73,16 +65,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
           /// Phone
           Row(
-            children: const [
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Icon(Icons.phone, color: Color(0xff123C8E), size: 24),
               SizedBox(width: 10),
               Text(
-                "+91 9883632477",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff123C8E),
-                ),
+                "+91 988 363 2477",
+                style: AppTextStyles.barlow800(fontSize: AppFontSize.fs19),
               ),
             ],
           ),
@@ -103,11 +92,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff1D1D1D),
-                ),
+                style: AppTextStyles.barlow700(fontSize: AppFontSize.fs15),
               ),
               if (hasArrow) ...[
                 const SizedBox(width: 4),
