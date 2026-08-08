@@ -1,0 +1,85 @@
+import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/dynamic_text.dart';
+import 'package:flutter/material.dart';
+
+class WhyChooseUsCard extends StatelessWidget {
+  const WhyChooseUsCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final items = [
+      "Experienced Moving Professionals",
+      "Secure Packing Materials",
+      "Affordable and Transparent Pricing",
+      "Timely Pickup and Delivery",
+      "Door-to-Door Service",
+      "Customer-Focused Support",
+      "Local and Long-Distance Relocation",
+    ];
+
+    return Container(
+      padding: const EdgeInsets.all(30),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(22),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withValues(alpha: .12),
+            blurRadius: 25,
+            offset: const Offset(0, 12),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DynamicText(
+            "Why Choose Us?",
+            style: AppTextStyles.oswald800(
+              fontSize: AppFontSize.fs38,
+              color: Colors.black87,
+            ),
+          ),
+
+          const SizedBox(height: 30),
+
+          ...items.map(
+            (e) => Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Row(
+                children: [
+                  Container(
+                    width: 42,
+                    height: 42,
+                    decoration: const BoxDecoration(
+                      color: Color(0xff0A377A),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.workspace_premium,
+                      size: 20,
+                      color: Color(0xffFDB913),
+                    ),
+                  ),
+
+                  const SizedBox(width: 18),
+
+                  Expanded(
+                    child: DynamicText(
+                      e,
+                      style: AppTextStyles.barlow500(
+                        fontSize: AppFontSize.fs18,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
