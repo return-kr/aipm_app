@@ -11,24 +11,33 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final bool isMobile = constraints.maxWidth < 768;
+    /// IMPORTANT:
+    /// Do NOT use constraints.maxWidth here.
+    ///
+    /// The card itself is only one-third of the desktop width,
+    /// so using its local width would incorrectly identify it
+    /// as mobile.
+    final double screenWidth = MediaQuery.sizeOf(context).width;
 
-        if (isMobile) {
-          return _mobileCard();
-        }
+    final bool isMobile = screenWidth < 768;
 
-        return _desktopTabletCard();
-      },
-    );
+    final bool isTablet = screenWidth >= 768 && screenWidth < 1024;
+
+    final bool isDesktop = screenWidth >= 1024;
+
+    if (isDesktop) {
+      return _desktopCard();
+    }
+
+    return _mobileTabletCard(isMobile: isMobile, isTablet: isTablet);
   }
 
   // ================================================================
-  // DESKTOP / TABLET CARD
+  // DESKTOP
+  // CONTENT LEFT + IMAGE RIGHT
   // ================================================================
 
-  Widget _desktopTabletCard() {
+  Widget _desktopCard() {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(18),
@@ -62,7 +71,7 @@ class ServiceCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(14),
               child: AspectRatio(
-                aspectRatio: 0.85,
+                aspectRatio: 0.82,
                 child: Image.network(service.image, fit: BoxFit.cover),
               ),
             ),
@@ -73,13 +82,14 @@ class ServiceCard extends StatelessWidget {
   }
 
   // ================================================================
-  // MOBILE CARD
+  // MOBILE + TABLET
+  // CONTENT TOP + IMAGE BOTTOM
   // ================================================================
 
-  Widget _mobileCard() {
+  Widget _mobileTabletCard({required bool isMobile, required bool isTablet}) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(isMobile ? 16 : 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
@@ -100,7 +110,7 @@ class ServiceCard extends StatelessWidget {
           /// =========================================================
           _content(),
 
-          const SizedBox(height: 20),
+          SizedBox(height: isMobile ? 20 : 25),
 
           /// =========================================================
           /// IMAGE
@@ -108,7 +118,7 @@ class ServiceCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
             child: AspectRatio(
-              aspectRatio: 16 / 9,
+              aspectRatio: isMobile ? 16 / 9 : 16 / 7,
               child: Image.network(
                 service.image,
                 width: double.infinity,

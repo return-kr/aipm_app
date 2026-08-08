@@ -62,43 +62,60 @@ class ServicesSection extends StatelessWidget {
 
                   /// ==================================================
                   /// DESKTOP
-                  /// 3 CARDS PER ROW
                   /// ==================================================
                   if (isDesktop)
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: services.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 22,
-                            mainAxisSpacing: 22,
-                            childAspectRatio: 1.18,
-                          ),
-                      itemBuilder: (context, index) {
-                        return ServiceCard(service: services[index]);
-                      },
-                    )
+                    _desktopServices()
                   /// ==================================================
-                  /// MOBILE + TABLET
-                  /// ONE CARD BELOW ANOTHER
+                  /// TABLET + MOBILE
                   /// ==================================================
                   else
-                    Column(
-                      children: services.map((service) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 22),
-                          child: ServiceCard(service: service),
-                        );
-                      }).toList(),
-                    ),
+                    _mobileTabletServices(isMobile: isMobile),
                 ],
               ),
             ),
           ),
         );
       },
+    );
+  }
+
+  // ================================================================
+  // DESKTOP SERVICES
+  // ================================================================
+
+  Widget _desktopServices() {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const double spacing = 22;
+
+        final double cardWidth = (constraints.maxWidth - (spacing * 2)) / 3;
+
+        return Wrap(
+          spacing: spacing,
+          runSpacing: spacing,
+          children: services.map((service) {
+            return SizedBox(
+              width: cardWidth,
+              child: ServiceCard(service: service),
+            );
+          }).toList(),
+        );
+      },
+    );
+  }
+
+  // ================================================================
+  // MOBILE + TABLET SERVICES
+  // ================================================================
+
+  Widget _mobileTabletServices({required bool isMobile}) {
+    return Column(
+      children: services.map((service) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 22),
+          child: ServiceCard(service: service),
+        );
+      }).toList(),
     );
   }
 }
