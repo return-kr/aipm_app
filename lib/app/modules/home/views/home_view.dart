@@ -150,8 +150,11 @@ class HeroSection extends StatelessWidget {
                           const SizedBox(height: 55),
 
                           Container(
-                            width: 380,
-                            padding: const EdgeInsets.all(22),
+                            width: 360,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 18,
+                            ),
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color: const Color(0xffFDB913),
@@ -165,13 +168,13 @@ class HeroSection extends StatelessWidget {
                             child: Row(
                               children: [
                                 Container(
-                                  height: 70,
-                                  width: 70,
+                                  height: 60,
+                                  width: 60,
                                   decoration: const BoxDecoration(
                                     color: Color(0xffFDB913),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: const Icon(Icons.call, size: 34),
+                                  child: const Icon(Icons.call, size: 30),
                                 ),
 
                                 const SizedBox(width: 18),
@@ -182,7 +185,7 @@ class HeroSection extends StatelessWidget {
                                     DynamicText(
                                       "Call Now:",
                                       style: AppTextStyles.barlow400(
-                                        fontSize: AppFontSize.fs22,
+                                        fontSize: AppFontSize.fs20,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -190,7 +193,7 @@ class HeroSection extends StatelessWidget {
                                     DynamicText(
                                       "+91 988 363 2477",
                                       style: AppTextStyles.barlow600(
-                                        fontSize: AppFontSize.fs28,
+                                        fontSize: AppFontSize.fs26,
                                         color: Colors.white,
                                       ),
                                     ),
@@ -1126,17 +1129,6 @@ class FooterSection extends StatelessWidget {
     );
   }
 
-  Widget _quickLinks() {
-    return _footerList("Quick Links", [
-      "Home",
-      "About Us",
-      "Services",
-      "Service Areas",
-      "Why Choose Us",
-      "Contact Us",
-    ]);
-  }
-
   Widget _services() {
     return _footerList("Our Services", [
       "Household Shifting",
@@ -1318,10 +1310,6 @@ class FooterSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(flex: 3, child: _companyInfo()),
-
-                    _divider(),
-
-                    Expanded(flex: 2, child: _quickLinks()),
 
                     _divider(),
 
