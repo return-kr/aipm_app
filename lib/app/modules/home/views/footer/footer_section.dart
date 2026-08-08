@@ -2,6 +2,7 @@ import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
+import 'package:aipm_app/app/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -10,6 +11,10 @@ class FooterSection extends StatelessWidget {
   FooterSection({super.key});
 
   final controller = Get.find<HomeController>();
+
+  // ================================================================
+  // DIVIDER
+  // ================================================================
 
   Widget _divider() {
     return Container(
@@ -20,6 +25,10 @@ class FooterSection extends StatelessWidget {
     );
   }
 
+  // ================================================================
+  // COMPANY INFO
+  // ================================================================
+
   Widget _companyInfo() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +36,9 @@ class FooterSection extends StatelessWidget {
         Row(
           children: [
             Image.network("https://picsum.photos/60", width: 55, height: 55),
+
             const SizedBox(width: 10),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -38,11 +49,12 @@ class FooterSection extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
+
                 DynamicText(
                   "PACKERS & MOVERS",
                   style: AppTextStyles.barlow600(
                     fontSize: AppFontSize.fs16,
-                    color: Color(0xffFDB913),
+                    color: const Color(0xffFDB913),
                   ),
                 ),
               ],
@@ -53,7 +65,9 @@ class FooterSection extends StatelessWidget {
         const SizedBox(height: 28),
 
         DynamicText(
-          "Your trusted partner for safe, fast\nand reliable moving services\nacross India.",
+          "Your trusted partner for safe, fast\n"
+          "and reliable moving services\n"
+          "across India.",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
             color: Colors.white,
@@ -64,7 +78,6 @@ class FooterSection extends StatelessWidget {
 
         Wrap(
           runSpacing: 5,
-          // spacing: 5,
           children: [
             _social(Icons.facebook, Colors.blue),
             _social(Icons.camera_alt, Colors.purple),
@@ -77,6 +90,10 @@ class FooterSection extends StatelessWidget {
     );
   }
 
+  // ================================================================
+  // SERVICES
+  // ================================================================
+
   Widget _services() {
     return _footerList("Our Services", [
       "Household Shifting",
@@ -87,6 +104,10 @@ class FooterSection extends StatelessWidget {
       "Warehouse & Storage",
     ]);
   }
+
+  // ================================================================
+  // CONTACT
+  // ================================================================
 
   Widget _contactUs() {
     return Column(
@@ -103,13 +124,21 @@ class FooterSection extends StatelessWidget {
         const SizedBox(height: 12),
 
         _contact(Icons.call, "+91 988 363 2477"),
+
         const SizedBox(height: 5),
+
         _contact(Icons.email_outlined, "info@example.com"),
+
         const SizedBox(height: 5),
+
         _contact(Icons.location_on_outlined, "Siliguri, West Bengal, India"),
       ],
     );
   }
+
+  // ================================================================
+  // BUSINESS HOURS
+  // ================================================================
 
   Widget _businessHours() {
     return Column(
@@ -145,42 +174,61 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 28),
 
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: const Color(0xffFDB913),
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Row(
-            children: [
-              Icon(Icons.call, size: 28, color: Color(0xff07275B)),
-              SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DynamicText(
-                    "Call Now",
-                    style: AppTextStyles.barlow600(
-                      fontSize: AppFontSize.fs16,
-                      color: Color(0xff07275B),
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  DynamicText(
-                    "+91 988 363 2477",
-                    style: AppTextStyles.barlow700(
-                      fontSize: AppFontSize.fs20,
-                      color: Color(0xff07275B),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+        _callButton(),
       ],
     );
   }
+
+  // ================================================================
+  // CALL BUTTON
+  // ================================================================
+
+  Widget _callButton() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: const Color(0xffFDB913),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.call, size: 28, color: Color(0xff07275B)),
+
+          const SizedBox(width: 16),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DynamicText(
+                  "Call Now",
+                  style: AppTextStyles.barlow600(
+                    fontSize: AppFontSize.fs16,
+                    color: const Color(0xff07275B),
+                  ),
+                ),
+
+                const SizedBox(height: 4),
+
+                DynamicText(
+                  "+91 988 363 2477",
+                  style: AppTextStyles.barlow700(
+                    fontSize: AppFontSize.fs20,
+                    color: const Color(0xff07275B),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ================================================================
+  // FOOTER LIST
+  // ================================================================
 
   Widget _footerList(String title, List<String> items) {
     return Column(
@@ -212,13 +260,18 @@ class FooterSection extends StatelessWidget {
     );
   }
 
+  // ================================================================
+  // CONTACT ITEM
+  // ================================================================
+
   Widget _contact(IconData icon, String text) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(Icons.circle, size: 0),
         Icon(icon, color: const Color(0xffFDB913), size: 18),
+
         const SizedBox(width: 14),
+
         Expanded(
           child: DynamicText(
             text,
@@ -232,6 +285,10 @@ class FooterSection extends StatelessWidget {
     );
   }
 
+  // ================================================================
+  // SOCIAL ICON
+  // ================================================================
+
   Widget _social(IconData icon, Color color) {
     return Container(
       width: 42,
@@ -242,57 +299,142 @@ class FooterSection extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      key: controller.footerKey,
-      color: const Color(0xff07275B),
+  // ================================================================
+  // DESKTOP FOOTER
+  // ================================================================
+
+  Widget _desktopFooter() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1320),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(flex: 3, child: _companyInfo()),
+
+              _divider(),
+
+              Expanded(flex: 2, child: _services()),
+
+              _divider(),
+
+              Expanded(flex: 3, child: _contactUs()),
+
+              _divider(),
+
+              Expanded(flex: 3, child: _businessHours()),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // ================================================================
+  // MOBILE / TABLET FOOTER
+  // ================================================================
+
+  Widget _mobileTabletFooter({required bool isMobile}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20 : 35,
+        vertical: 35,
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1320),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(flex: 3, child: _companyInfo()),
+          /// ==========================================================
+          /// COMPANY INFO
+          /// ==========================================================
+          _companyInfo(),
 
-                    _divider(),
+          const SizedBox(height: 40),
 
-                    Expanded(flex: 2, child: _services()),
+          /// ==========================================================
+          /// SERVICES + CONTACT
+          /// ==========================================================
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(child: _services()),
 
-                    _divider(),
+              const SizedBox(width: 25),
 
-                    Expanded(flex: 3, child: _contactUs()),
-
-                    _divider(),
-
-                    Expanded(flex: 3, child: _businessHours()),
-                  ],
-                ),
-              ),
-            ),
+              Expanded(child: _contactUs()),
+            ],
           ),
 
-          Container(height: 1, color: Colors.white.withValues(alpha: .08)),
+          const SizedBox(height: 40),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 18),
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1320),
-                child: Row(
+          /// ==========================================================
+          /// BUSINESS HOURS
+          /// ==========================================================
+          _businessHours(),
+        ],
+      ),
+    );
+  }
+
+  // ================================================================
+  // COPYRIGHT
+  // ================================================================
+
+  Widget _copyright({required bool isMobile}) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? 20 : 40,
+        vertical: 18,
+      ),
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(color: Colors.white.withValues(alpha: .08)),
+        ),
+      ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1320),
+          child: isMobile
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     DynamicText(
-                      "© 2024 ALL INDIA PACKERS & MOVERS. All Rights Reserved.",
+                      "© 2024 ALL INDIA PACKERS & MOVERS. "
+                      "All Rights Reserved.",
+                      textAlign: TextAlign.center,
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
                         color: Colors.white,
                       ),
                     ),
-                    Spacer(),
+
+                    const SizedBox(height: 8),
+
+                    DynamicText(
+                      "Designed for Safe & Secure Moving",
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.barlow300(
+                        fontSize: AppFontSize.fs12,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  children: [
+                    DynamicText(
+                      "© 2024 ALL INDIA PACKERS & MOVERS. "
+                      "All Rights Reserved.",
+                      style: AppTextStyles.barlow300(
+                        fontSize: AppFontSize.fs12,
+                        color: Colors.white,
+                      ),
+                    ),
+
+                    const Spacer(),
+
                     DynamicText(
                       "Designed for Safe & Secure Moving",
                       style: AppTextStyles.barlow300(
@@ -302,11 +444,41 @@ class FooterSection extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
+    );
+  }
+
+  // ================================================================
+  // BUILD
+  // ================================================================
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveWrapper(
+      builder: (context, isMobile, isTablet, isDesktop) {
+        return Container(
+          key: controller.footerKey,
+          width: double.infinity,
+          color: const Color(0xff07275B),
+          child: Column(
+            children: [
+              /// ======================================================
+              /// MAIN FOOTER
+              /// ======================================================
+              if (isDesktop)
+                _desktopFooter()
+              else
+                _mobileTabletFooter(isMobile: isMobile),
+
+              /// ======================================================
+              /// COPYRIGHT
+              /// ======================================================
+              _copyright(isMobile: isMobile),
+            ],
+          ),
+        );
+      },
     );
   }
 }
