@@ -13,31 +13,6 @@ class AboutSection extends StatelessWidget {
 
   final controller = Get.find<HomeController>();
 
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveWrapper(
-      builder: (context, isMobile, isTablet, isDesktop) {
-        return Container(
-          key: controller.aboutKey,
-          width: double.infinity,
-          color: Colors.white,
-          padding: EdgeInsets.symmetric(
-            vertical: isDesktop ? 90 : 60,
-            horizontal: isMobile ? 20 : 35,
-          ),
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1320),
-              child: isDesktop
-                  ? _desktopLayout()
-                  : _mobileTabletLayout(isMobile: isMobile),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   // ================================================================
   // DESKTOP LAYOUT
   // ================================================================
@@ -57,7 +32,7 @@ class AboutSection extends StatelessWidget {
         const SizedBox(width: 55),
 
         /// WHY CHOOSE US
-        const Expanded(flex: 3, child: WhyChooseUsCard()),
+        Expanded(flex: 3, child: WhyChooseUsCard()),
       ],
     );
   }
@@ -87,7 +62,7 @@ class AboutSection extends StatelessWidget {
         /// ============================================================
         /// WHY CHOOSE US
         /// ============================================================
-        const WhyChooseUsCard(),
+        WhyChooseUsCard(),
       ],
     );
   }
@@ -215,6 +190,31 @@ class AboutSection extends StatelessWidget {
         height: height,
         fit: BoxFit.cover,
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveWrapper(
+      builder: (context, isMobile, isTablet, isDesktop) {
+        return Container(
+          key: controller.aboutKey,
+          width: double.infinity,
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(
+            vertical: isDesktop ? 90 : 60,
+            horizontal: isMobile ? 20 : 35,
+          ),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1320),
+              child: isDesktop
+                  ? _desktopLayout()
+                  : _mobileTabletLayout(isMobile: isMobile),
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -83,7 +83,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     _navItem(
-                      "Why Choose Us",
+                      "Home",
                       onTap: () {
                         controller.scrollToSection(controller.heroKey);
                       },
@@ -93,6 +93,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       "About Us",
                       onTap: () {
                         controller.scrollToSection(controller.aboutKey);
+                      },
+                    ),
+
+                    _navItem(
+                      "Why Choose Us",
+                      onTap: () {
+                        controller.scrollToSection(controller.whyChooseKey);
                       },
                     ),
 
@@ -232,7 +239,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             _drawerItem(
                               context,
                               icon: Icons.home_outlined,
-                              title: "Why Choose Us",
+                              title: "Home",
                               onTap: () {
                                 controller.scrollToSection(controller.heroKey);
                               },
@@ -244,6 +251,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                               title: "About Us",
                               onTap: () {
                                 controller.scrollToSection(controller.aboutKey);
+                              },
+                            ),
+
+                            _drawerItem(
+                              context,
+                              icon: Icons.question_mark_outlined,
+                              title: "Why Choose Us",
+                              onTap: () {
+                                controller.scrollToSection(
+                                  controller.whyChooseKey,
+                                );
                               },
                             ),
 

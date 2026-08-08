@@ -1,10 +1,15 @@
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
 class WhyChooseUsCard extends StatelessWidget {
-  const WhyChooseUsCard({super.key});
+  WhyChooseUsCard({super.key});
+
+  final controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +24,7 @@ class WhyChooseUsCard extends StatelessWidget {
     ];
 
     return Container(
+      key: controller.whyChooseKey,
       padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
         color: Colors.white,

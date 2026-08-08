@@ -6,6 +6,7 @@ class HomeController extends GetxController {
 
   final GlobalKey heroKey = GlobalKey();
   final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey whyChooseKey = GlobalKey();
   final GlobalKey servicesKey = GlobalKey();
   final GlobalKey serviceAreasKey = GlobalKey();
   final GlobalKey footerKey = GlobalKey();
