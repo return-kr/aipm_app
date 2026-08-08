@@ -17,15 +17,20 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            HeroSection(),
-            AboutSection(),
-            ServicesSection(),
-            ServiceAreasSection(),
-            FooterSection(),
-          ],
+      body: Scrollbar(
+        controller: controller.scrollController,
+        thumbVisibility: true,
+        child: SingleChildScrollView(
+          controller: controller.scrollController,
+          child: Column(
+            children: [
+              HeroSection(),
+              AboutSection(),
+              ServicesSection(),
+              ServiceAreasSection(),
+              FooterSection(),
+            ],
+          ),
         ),
       ),
     );
@@ -33,11 +38,14 @@ class HomeView extends GetView<HomeController> {
 }
 
 class HeroSection extends StatelessWidget {
-  const HeroSection({super.key});
+  HeroSection({super.key});
+
+  final controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      key: controller.heroKey,
       height: 760,
       width: double.infinity,
       child: Stack(
@@ -435,11 +443,14 @@ class QuoteForm extends StatelessWidget {
 }
 
 class AboutSection extends StatelessWidget {
-  const AboutSection({super.key});
+  AboutSection({super.key});
+
+  final controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: controller.aboutKey,
       width: double.infinity,
       color: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 90, horizontal: 20),
@@ -682,11 +693,14 @@ class FeatureItem extends StatelessWidget {
 }
 
 class ServicesSection extends StatelessWidget {
-  const ServicesSection({super.key});
+  ServicesSection({super.key});
+
+  final controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: controller.servicesKey,
       width: double.infinity,
       color: const Color(0xffFAFBFD),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
@@ -879,11 +893,14 @@ class ServiceCard extends StatelessWidget {
 }
 
 class ServiceAreasSection extends StatelessWidget {
-  const ServiceAreasSection({super.key});
+  ServiceAreasSection({super.key});
+
+  final controller = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: controller.serviceAreasKey,
       width: double.infinity,
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
@@ -1039,7 +1056,9 @@ class CityCard extends StatelessWidget {
 }
 
 class FooterSection extends StatelessWidget {
-  const FooterSection({super.key});
+  FooterSection({super.key});
+
+  final controller = Get.find<HomeController>();
 
   Widget _divider() {
     return Container(
@@ -1286,6 +1305,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: controller.footerKey,
       color: const Color(0xff07275B),
       child: Column(
         children: [

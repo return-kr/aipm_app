@@ -1,9 +1,14 @@
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  CustomAppBar({super.key});
+
+  final controller = Get.find<HomeController>();
 
   @override
   Size get preferredSize => const Size.fromHeight(85);
@@ -52,12 +57,36 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           /// Navigation Items
           Row(
             children: [
-              _navItem("Home"),
-              _navItem("About Us"),
-              _navItem("Services", hasArrow: true),
-              _navItem("Service Areas"),
-              _navItem("Why Choose Us"),
-              _navItem("Contact Us"),
+              _navItem(
+                "Why Choose Us",
+                onTap: () {
+                  controller.scrollToSection(controller.heroKey);
+                },
+              ),
+              _navItem(
+                "About Us",
+                onTap: () {
+                  controller.scrollToSection(controller.aboutKey);
+                },
+              ),
+              _navItem(
+                "Services",
+                onTap: () {
+                  controller.scrollToSection(controller.servicesKey);
+                },
+              ),
+              _navItem(
+                "Service Areas",
+                onTap: () {
+                  controller.scrollToSection(controller.serviceAreasKey);
+                },
+              ),
+              _navItem(
+                "Contact Us",
+                onTap: () {
+                  controller.scrollToSection(controller.footerKey);
+                },
+              ),
             ],
           ),
 
@@ -80,11 +109,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _navItem(String title, {bool hasArrow = false}) {
+  Widget _navItem(String title, {bool hasArrow = false, VoidCallback? onTap}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: InkWell(
-        onTap: () {},
+        onTap: onTap ?? () {},
         borderRadius: BorderRadius.circular(6),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
