@@ -64,17 +64,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           const Spacer(),
 
           /// Phone
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(Icons.phone, color: Color(0xff123C8E), size: 24),
-              SizedBox(width: 10),
-              Text(
-                "+91 988 363 2477",
-                style: AppTextStyles.barlow800(fontSize: AppFontSize.fs19),
-              ),
-            ],
-          ),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
+          //     Icon(Icons.phone, color: Color(0xff123C8E), size: 24),
+          //     SizedBox(width: 10),
+          //     Text(
+          //       "+91 988 363 2477",
+          //       style: AppTextStyles.barlow800(fontSize: AppFontSize.fs19),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

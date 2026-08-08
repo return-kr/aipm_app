@@ -1092,7 +1092,9 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 30),
 
-        Row(
+        Wrap(
+          runSpacing: 5,
+          // spacing: 5,
           children: [
             _social(Icons.facebook, Colors.blue),
             _social(Icons.camera_alt, Colors.purple),
