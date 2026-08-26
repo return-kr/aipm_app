@@ -1,3 +1,4 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
@@ -54,6 +55,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.oswald800(
                               fontSize: AppFontSize.fs24,
+                              color: AppColors.deepNavy,
                             ),
                           ),
 
@@ -64,6 +66,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.barlow600(
                               fontSize: AppFontSize.fs18,
+                              color: AppColors.navyBlue,
                             ),
                           ),
                         ],
@@ -378,7 +381,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 const Icon(
                   Icons.keyboard_arrow_down_rounded,
                   size: 18,
-                  color: Colors.black87,
+                  color: AppColors.deepNavy,
                 ),
               ],
             ],

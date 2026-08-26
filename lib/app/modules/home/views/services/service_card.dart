@@ -1,3 +1,4 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/data/service_model.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
@@ -42,12 +43,12 @@ class ServiceCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: const Color(0xffECECEC)),
+        border: Border.all(color: AppColors.lightSilver),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: .05),
+            color: AppColors.deepNavy.withValues(alpha: .05),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -91,12 +92,12 @@ class ServiceCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(isMobile ? 16 : 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: const Color(0xffECECEC)),
+        border: Border.all(color: AppColors.lightSilver),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: .05),
+            color: AppColors.deepNavy.withValues(alpha: .05),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -149,7 +150,7 @@ class ServiceCard extends StatelessWidget {
               width: 48,
               height: 48,
               decoration: const BoxDecoration(
-                color: Color(0xffFDB913),
+                color: AppColors.orange,
                 shape: BoxShape.circle,
               ),
               child: const Icon(
@@ -182,7 +183,7 @@ class ServiceCard extends StatelessWidget {
           service.description,
           style: AppTextStyles.barlow500(
             fontSize: AppFontSize.fs16,
-            color: Colors.grey.shade800,
+            color: AppColors.navyBlue,
           ),
         ),
 
@@ -195,7 +196,7 @@ class ServiceCard extends StatelessWidget {
           "Included:",
           style: AppTextStyles.barlow800(
             fontSize: AppFontSize.fs18,
-            color: Colors.black87,
+            color: AppColors.deepNavy,
           ),
         ),
 
@@ -222,7 +223,7 @@ class ServiceCard extends StatelessWidget {
                     feature,
                     style: AppTextStyles.barlow500(
                       fontSize: AppFontSize.fs16,
-                      color: Colors.grey.shade800,
+                      color: AppColors.navyBlue,
                     ),
                   ),
                 ),

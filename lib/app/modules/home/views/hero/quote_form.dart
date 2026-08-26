@@ -1,16 +1,23 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/route_manager.dart';
 
 class QuoteForm extends StatelessWidget {
-  const QuoteForm({super.key});
+  QuoteForm({super.key});
+
+  final controller = Get.find<HomeController>();
 
   Widget _input({
     required IconData icon,
     required String label,
     required String hint,
     IconData? suffix,
+    TextEditingController? controller,
   }) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,16 +40,17 @@ class QuoteForm extends StatelessWidget {
                 label,
                 style: AppTextStyles.barlow700(
                   fontSize: AppFontSize.fs16,
-                  color: Colors.black87,
+                  color: AppColors.deepNavy,
                 ),
               ),
               const SizedBox(height: 8),
               SizedBox(
                 height: 46,
                 child: TextField(
+                  controller: controller,
                   style: AppTextStyles.barlow600(
                     fontSize: AppFontSize.fs18,
-                    color: Colors.black87,
+                    color: AppColors.deepNavy,
                   ),
                   decoration: InputDecoration(
                     hintText: hint,
@@ -55,9 +63,9 @@ class QuoteForm extends StatelessWidget {
                       vertical: 12,
                     ),
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: AppColors.white,
                     suffixIcon: suffix != null
-                        ? Icon(suffix, size: 18, color: Colors.grey)
+                        ? Icon(suffix, size: 18, color: AppColors.darkBlue)
                         : null,
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -65,10 +73,7 @@ class QuoteForm extends StatelessWidget {
                     ),
                     focusedBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
-                      borderSide: BorderSide(
-                        color: Color(0xff083A86),
-                        width: 1.5,
-                      ),
+                      borderSide: BorderSide(color: AppColors.blue, width: 1.5),
                     ),
                   ),
                 ),
@@ -89,7 +94,7 @@ class QuoteForm extends StatelessWidget {
           height: 85,
           padding: const EdgeInsets.symmetric(horizontal: 28),
           decoration: const BoxDecoration(
-            color: Color(0xff083A86),
+            color: AppColors.navyBlue,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(18),
               topRight: Radius.circular(18),
@@ -101,13 +106,13 @@ class QuoteForm extends StatelessWidget {
                 height: 52,
                 width: 52,
                 decoration: BoxDecoration(
-                  color: const Color(0xffFDB913).withValues(alpha: .15),
+                  color: AppColors.orange.withValues(alpha: .15),
                   shape: BoxShape.circle,
-                  border: Border.all(color: const Color(0xffFDB913), width: 2),
+                  border: Border.all(color: AppColors.orange, width: 2),
                 ),
                 child: const Icon(
                   Icons.local_shipping,
-                  color: Color(0xffFDB913),
+                  color: AppColors.orange,
                   size: 28,
                 ),
               ),
@@ -117,7 +122,7 @@ class QuoteForm extends StatelessWidget {
                   "Get a Free Moving Quote",
                   style: AppTextStyles.oswald500(
                     fontSize: AppFontSize.fs30,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
               ),
@@ -136,6 +141,7 @@ class QuoteForm extends StatelessWidget {
                   icon: Icons.person_outline,
                   label: "Name",
                   hint: "Your Name",
+                  controller: controller.nameController,
                 ),
 
                 const SizedBox(height: 18),
@@ -144,6 +150,7 @@ class QuoteForm extends StatelessWidget {
                   icon: Icons.call_outlined,
                   label: "Phone Number",
                   hint: "Your Phone Number",
+                  controller: controller.phoneController,
                 ),
 
                 const SizedBox(height: 18),
@@ -152,6 +159,7 @@ class QuoteForm extends StatelessWidget {
                   icon: Icons.location_on_outlined,
                   label: "Pickup Location",
                   hint: "From (City/Address)",
+                  controller: controller.fromController,
                 ),
 
                 const SizedBox(height: 18),
@@ -160,6 +168,7 @@ class QuoteForm extends StatelessWidget {
                   icon: Icons.location_on_outlined,
                   label: "Destination Location",
                   hint: "To (City/Address)",
+                  controller: controller.toController,
                 ),
 
                 const SizedBox(height: 18),
@@ -169,6 +178,7 @@ class QuoteForm extends StatelessWidget {
                   label: "Moving Date",
                   hint: "Select Moving Date",
                   suffix: Icons.calendar_today_outlined,
+                  controller: controller.dateController,
                 ),
 
                 const SizedBox(height: 30),
@@ -177,10 +187,32 @@ class QuoteForm extends StatelessWidget {
                   width: double.infinity,
                   height: 58,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.sendQuoteEmail().then((success) {
+                        if (success) {
+                          ScaffoldMessenger.of(
+                            Get.context as BuildContext,
+                          ).showSnackBar(
+                            const SnackBar(
+                              content: Text('Quote request sent successfully!'),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(
+                            Get.context as BuildContext,
+                          ).showSnackBar(
+                            const SnackBar(
+                              content: Text('Failed to send quote request.'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      backgroundColor: const Color(0xffFDB913),
+                      backgroundColor: AppColors.orange,
                       foregroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -190,7 +222,7 @@ class QuoteForm extends StatelessWidget {
                       "SUBMIT REQUEST",
                       style: AppTextStyles.barlow700(
                         fontSize: AppFontSize.fs18,
-                        color: Colors.black87,
+                        color: AppColors.deepNavy,
                       ),
                     ),
                   ),

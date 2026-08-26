@@ -1,6 +1,8 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/call_us_button.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:aipm_app/app/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class FooterSection extends StatelessWidget {
       width: 1,
       height: 260,
       margin: const EdgeInsets.symmetric(horizontal: 18),
-      color: Colors.white.withValues(alpha: .08),
+      color: AppColors.white.withValues(alpha: .08),
     );
   }
 
@@ -46,7 +48,7 @@ class FooterSection extends StatelessWidget {
                   "ALL INDIA",
                   style: AppTextStyles.oswald800(
                     fontSize: AppFontSize.fs20,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
 
@@ -54,7 +56,7 @@ class FooterSection extends StatelessWidget {
                   "PACKERS & MOVERS",
                   style: AppTextStyles.barlow600(
                     fontSize: AppFontSize.fs16,
-                    color: const Color(0xffFDB913),
+                    color: AppColors.orange,
                   ),
                 ),
               ],
@@ -70,7 +72,7 @@ class FooterSection extends StatelessWidget {
           "across India.",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -117,7 +119,7 @@ class FooterSection extends StatelessWidget {
           "Contact Us",
           style: AppTextStyles.oswald700(
             fontSize: AppFontSize.fs19,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -148,7 +150,7 @@ class FooterSection extends StatelessWidget {
           "Business Hours",
           style: AppTextStyles.oswald700(
             fontSize: AppFontSize.fs19,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -158,7 +160,7 @@ class FooterSection extends StatelessWidget {
           "Mon - Sun",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -168,7 +170,7 @@ class FooterSection extends StatelessWidget {
           "8:00 AM - 8:00 PM",
           style: AppTextStyles.barlow300(
             fontSize: AppFontSize.fs15,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -184,46 +186,47 @@ class FooterSection extends StatelessWidget {
   // ================================================================
 
   Widget _callButton() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: const Color(0xffFDB913),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.call, size: 28, color: Color(0xff07275B)),
+    return CallUsButton();
+    // return Container(
+    //   width: double.infinity,
+    //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    //   decoration: BoxDecoration(
+    //     color: const Color(0xffFDB913),
+    //     borderRadius: BorderRadius.circular(14),
+    //   ),
+    //   child: Row(
+    //     children: [
+    //       const Icon(Icons.call, size: 28, color: Color(0xff07275B)),
 
-          const SizedBox(width: 16),
+    //       const SizedBox(width: 16),
 
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DynamicText(
-                  "Call Now",
-                  style: AppTextStyles.barlow600(
-                    fontSize: AppFontSize.fs16,
-                    color: const Color(0xff07275B),
-                  ),
-                ),
+    //       Expanded(
+    //         child: Column(
+    //           crossAxisAlignment: CrossAxisAlignment.start,
+    //           children: [
+    //             DynamicText(
+    //               "Call Now",
+    //               style: AppTextStyles.barlow600(
+    //                 fontSize: AppFontSize.fs16,
+    //                 color: const Color(0xff07275B),
+    //               ),
+    //             ),
 
-                const SizedBox(height: 4),
+    //             const SizedBox(height: 4),
 
-                DynamicText(
-                  "+91 988 363 2477",
-                  style: AppTextStyles.barlow700(
-                    fontSize: AppFontSize.fs20,
-                    color: const Color(0xff07275B),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
+    //             DynamicText(
+    //               "+91 988 363 2477",
+    //               style: AppTextStyles.barlow700(
+    //                 fontSize: AppFontSize.fs20,
+    //                 color: const Color(0xff07275B),
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 
   // ================================================================
@@ -238,7 +241,7 @@ class FooterSection extends StatelessWidget {
           title,
           style: AppTextStyles.oswald700(
             fontSize: AppFontSize.fs19,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -251,7 +254,7 @@ class FooterSection extends StatelessWidget {
               e,
               style: AppTextStyles.barlow300(
                 fontSize: AppFontSize.fs15,
-                color: Colors.white,
+                color: AppColors.white,
               ),
             ),
           ),
@@ -268,7 +271,7 @@ class FooterSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: const Color(0xffFDB913), size: 18),
+        Icon(icon, color: AppColors.orange, size: 18),
 
         const SizedBox(width: 14),
 
@@ -277,7 +280,7 @@ class FooterSection extends StatelessWidget {
             text,
             style: AppTextStyles.barlow300(
               fontSize: AppFontSize.fs15,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
         ),
@@ -295,7 +298,7 @@ class FooterSection extends StatelessWidget {
       height: 42,
       margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-      child: Icon(icon, color: Colors.white, size: 22),
+      child: Icon(icon, color: AppColors.white, size: 22),
     );
   }
 
@@ -390,7 +393,7 @@ class FooterSection extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(color: Colors.white.withValues(alpha: .08)),
+          top: BorderSide(color: AppColors.white.withValues(alpha: .08)),
         ),
       ),
       child: Center(
@@ -406,7 +409,7 @@ class FooterSection extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
 
@@ -417,7 +420,7 @@ class FooterSection extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                   ],
@@ -429,7 +432,7 @@ class FooterSection extends StatelessWidget {
                       "All Rights Reserved.",
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
 
@@ -439,7 +442,7 @@ class FooterSection extends StatelessWidget {
                       "Designed for Safe & Secure Moving",
                       style: AppTextStyles.barlow300(
                         fontSize: AppFontSize.fs12,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                   ],
@@ -460,7 +463,7 @@ class FooterSection extends StatelessWidget {
         return Container(
           key: controller.footerKey,
           width: double.infinity,
-          color: const Color(0xff07275B),
+          color: AppColors.darkBlue,
           child: Column(
             children: [
               /// ======================================================

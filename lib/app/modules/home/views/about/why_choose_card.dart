@@ -1,3 +1,4 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
@@ -27,7 +28,7 @@ class WhyChooseUsCard extends StatelessWidget {
       key: controller.whyChooseKey,
       padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(22),
         boxShadow: [
           BoxShadow(
@@ -44,7 +45,7 @@ class WhyChooseUsCard extends StatelessWidget {
             "Why Choose Us?",
             style: AppTextStyles.oswald800(
               fontSize: AppFontSize.fs38,
-              color: Colors.black87,
+              color: AppColors.deepNavy,
             ),
           ),
 
@@ -59,13 +60,13 @@ class WhyChooseUsCard extends StatelessWidget {
                     width: 42,
                     height: 42,
                     decoration: const BoxDecoration(
-                      color: Color(0xff0A377A),
+                      color: AppColors.darkBlue,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
                       Icons.workspace_premium,
                       size: 20,
-                      color: Color(0xffFDB913),
+                      color: AppColors.orange,
                     ),
                   ),
 
@@ -76,7 +77,7 @@ class WhyChooseUsCard extends StatelessWidget {
                       e,
                       style: AppTextStyles.barlow500(
                         fontSize: AppFontSize.fs18,
-                        color: Colors.black87,
+                        color: AppColors.navyBlue,
                       ),
                     ),
                   ),
