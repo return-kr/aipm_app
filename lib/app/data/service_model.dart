@@ -1,3 +1,5 @@
+import 'package:aipm_app/app/data/app_images.dart';
+
 class ServiceModel {
   final String title;
   final String description;
@@ -17,7 +19,7 @@ final List<ServiceModel> services = [
     title: "Household\nShifting Services",
     description:
         "We provide complete household relocation services, including packing, loading, transportation, unloading, and unpacking.",
-    image: "https://picsum.photos/300/420?random=1",
+    image: AppImages.household,
     features: [
       "Furniture Packing",
       "Kitchen Item Packing",
@@ -31,7 +33,7 @@ final List<ServiceModel> services = [
     title: "Office Relocation\nServices",
     description:
         "Efficient office shifting solutions designed to minimize business downtime while ensuring safety.",
-    image: "https://picsum.photos/300/420?random=2",
+    image: AppImages.office,
     features: [
       "Office Furniture Moving",
       "Computer & IT Equipment",
@@ -44,7 +46,7 @@ final List<ServiceModel> services = [
     title: "Packing &\nUnpacking Services",
     description:
         "Professional packing using premium quality materials to keep every item secure throughout the move.",
-    image: "https://picsum.photos/300/420?random=3",
+    image: AppImages.packing,
     features: [
       "Safe Packing",
       "Labeling",
@@ -57,7 +59,7 @@ final List<ServiceModel> services = [
     title: "Loading & Unloading\nServices",
     description:
         "Our experienced workforce ensures careful loading and unloading with proper handling procedures.",
-    image: "https://picsum.photos/300/420?random=4",
+    image: AppImages.loading,
     features: [
       "Skilled Labor",
       "Equipment Handling",
@@ -69,7 +71,7 @@ final List<ServiceModel> services = [
     title: "Vehicle Transportation\nServices",
     description:
         "Secure transportation solutions for cars and bikes across India with complete safety measures.",
-    image: "https://picsum.photos/300/420?random=5",
+    image: AppImages.vehicle,
     features: [
       "Car Carrier Services",
       "Bike Transportation",
@@ -82,7 +84,7 @@ final List<ServiceModel> services = [
     title: "Warehouse & Storage\nServices",
     description:
         "Flexible short-term and long-term storage solutions for household and commercial goods.",
-    image: "https://picsum.photos/300/420?random=6",
+    image: AppImages.warehouse,
     features: [
       "Household Storage",
       "Office Storage",

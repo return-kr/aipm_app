@@ -1,12 +1,15 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/modules/home/views/about/why_choose_card.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/call_us_button.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:aipm_app/app/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/route_manager.dart';
 
 class AboutSection extends StatelessWidget {
   AboutSection({super.key});
@@ -87,7 +90,7 @@ class AboutSection extends StatelessWidget {
               "ABOUT US",
               style: AppTextStyles.barlow700(
                 fontSize: AppFontSize.fs16,
-                color: Colors.blue.shade800,
+                color: AppColors.blue,
               ),
             ),
 
@@ -105,7 +108,7 @@ class AboutSection extends StatelessWidget {
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: AppTextStyles.oswald800(
             fontSize: AppFontSize.fs38,
-            color: Colors.black87,
+            color: AppColors.deepNavy,
           ),
         ),
 
@@ -117,7 +120,7 @@ class AboutSection extends StatelessWidget {
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: AppTextStyles.barlow500(
             fontSize: AppFontSize.fs18,
-            color: Colors.black87,
+            color: AppColors.deepNavy,
           ),
         ),
 
@@ -129,7 +132,7 @@ class AboutSection extends StatelessWidget {
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: AppTextStyles.barlow500(
             fontSize: AppFontSize.fs18,
-            color: Colors.grey.shade800,
+            color: AppColors.navyBlue,
           ),
         ),
 
@@ -143,13 +146,16 @@ class AboutSection extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                backgroundColor: const Color(0xff062D6D),
+                backgroundColor: AppColors.darkBlue,
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                final call = CallUsButton();
+                call.handleCall(Get.context as BuildContext);
+              },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -157,7 +163,7 @@ class AboutSection extends StatelessWidget {
                     "LEARN MORE ABOUT US",
                     style: AppTextStyles.barlow500(
                       fontSize: AppFontSize.fs16,
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
 
@@ -165,7 +171,7 @@ class AboutSection extends StatelessWidget {
 
                   const Icon(
                     Icons.arrow_forward,
-                    color: Colors.white,
+                    color: AppColors.white,
                     size: 18,
                   ),
                 ],
@@ -184,8 +190,8 @@ class AboutSection extends StatelessWidget {
   Widget _aboutImage({required double height}) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(18),
-      child: Image.network(
-        "https://picsum.photos/500/700",
+      child: Image.asset(
+        AppImages.whyImage,
         width: double.infinity,
         height: height,
         fit: BoxFit.cover,
@@ -200,7 +206,7 @@ class AboutSection extends StatelessWidget {
         return Container(
           key: controller.aboutKey,
           width: double.infinity,
-          color: Colors.white,
+          color: AppColors.white,
           padding: EdgeInsets.symmetric(
             vertical: isDesktop ? 90 : 60,
             horizontal: isMobile ? 20 : 35,

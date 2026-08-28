@@ -1,4 +1,6 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
@@ -35,8 +37,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Expanded(
                 child: Row(
                   children: [
-                    Image.network(
-                      "https://picsum.photos/70",
+                    Image.asset(
+                      AppImages.logo,
                       width: isMobile ? 48 : 55,
                       height: isMobile ? 48 : 55,
                       fit: BoxFit.cover,
@@ -54,6 +56,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.oswald800(
                               fontSize: AppFontSize.fs24,
+                              color: AppColors.deepNavy,
                             ),
                           ),
 
@@ -64,6 +67,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.barlow600(
                               fontSize: AppFontSize.fs18,
+                              color: AppColors.navyBlue,
                             ),
                           ),
                         ],
@@ -161,13 +165,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       context: context,
       barrierDismissible: true,
       barrierLabel: "Menu",
-      barrierColor: Colors.black54,
       transitionDuration: const Duration(milliseconds: 250),
       pageBuilder: (context, animation, secondaryAnimation) {
         return Align(
           alignment: Alignment.centerRight,
           child: Material(
-            color: Colors.white,
+            color: AppColors.white,
             child: SafeArea(
               child: SizedBox(
                 width: 320,
@@ -179,16 +182,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Container(
                       height: 85,
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
                         border: Border(
-                          bottom: BorderSide(color: Color(0xffEEEEEE)),
+                          bottom: BorderSide(color: AppColors.lightSilver),
                         ),
                       ),
                       child: Row(
                         children: [
-                          Image.network(
-                            "https://picsum.photos/70",
+                          Image.asset(
+                            AppImages.logo,
                             width: 48,
                             height: 48,
                             fit: BoxFit.cover,
@@ -205,12 +208,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                                   "ALL INDIA",
                                   style: AppTextStyles.oswald800(
                                     fontSize: AppFontSize.fs20,
+                                    color: AppColors.deepNavy,
                                   ),
                                 ),
                                 DynamicText(
                                   "PACKERS & MOVERS",
                                   style: AppTextStyles.barlow600(
                                     fontSize: AppFontSize.fs14,
+                                    color: AppColors.navyBlue,
                                   ),
                                 ),
                               ],
@@ -223,7 +228,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             },
                             icon: const Icon(
                               Icons.close_rounded,
-                              color: Color(0xff123C8E),
+                              color: AppColors.blue,
                             ),
                           ),
                         ],
@@ -306,15 +311,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
-                        border: Border(
-                          top: BorderSide(color: Color(0xffEEEEEE)),
-                        ),
+                        border: Border(top: BorderSide(color: AppColors.blue)),
                       ),
                       child: Row(
                         children: [
                           const Icon(
                             Icons.phone_outlined,
-                            color: Color(0xff123C8E),
+                            color: AppColors.blue,
                             size: 22,
                           ),
 
@@ -324,6 +327,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             "+91 988 363 2477",
                             style: AppTextStyles.barlow700(
                               fontSize: AppFontSize.fs15,
+                              color: AppColors.navyBlue,
                             ),
                           ),
                         ],
@@ -378,7 +382,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 const Icon(
                   Icons.keyboard_arrow_down_rounded,
                   size: 18,
-                  color: Colors.black87,
+                  color: AppColors.deepNavy,
                 ),
               ],
             ],
@@ -408,14 +412,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           children: [
-            Icon(icon, color: const Color(0xff123C8E), size: 24),
+            Icon(icon, color: AppColors.blue, size: 24),
 
             const SizedBox(width: 16),
 
             Expanded(
               child: DynamicText(
                 title,
-                style: AppTextStyles.barlow600(fontSize: AppFontSize.fs17),
+                style: AppTextStyles.barlow600(
+                  fontSize: AppFontSize.fs17,
+                  color: AppColors.navyBlue,
+                ),
               ),
             ),
 

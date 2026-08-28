@@ -1,8 +1,11 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/modules/home/views/about/feature_item.dart';
 import 'package:aipm_app/app/modules/home/views/hero/quote_form.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/call_us_button.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:aipm_app/app/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +34,8 @@ class HeroSection extends StatelessWidget {
               children: [
                 /// Background Image
                 Positioned.fill(
-                  child: Image.network(
-                    "https://picsum.photos/1920/1080",
+                  child: Image.asset(
+                    AppImages.heroImage,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -43,9 +46,9 @@ class HeroSection extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          const Color(0xff07224D).withValues(alpha: .92),
-                          const Color(0xff07224D).withValues(alpha: .75),
-                          Colors.black.withValues(alpha: .45),
+                          AppColors.navyBlue.withValues(alpha: .92),
+                          AppColors.navyBlue.withValues(alpha: .75),
+                          AppColors.deepNavy.withValues(alpha: .45),
                           Colors.transparent,
                         ],
                         begin: Alignment.centerLeft,
@@ -107,8 +110,8 @@ class HeroSection extends StatelessWidget {
                 children: [
                   /// Background Image
                   Positioned.fill(
-                    child: Image.network(
-                      "https://picsum.photos/1920/1080",
+                    child: Image.asset(
+                      AppImages.heroImage,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -119,9 +122,9 @@ class HeroSection extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0xff07224D).withValues(alpha: .92),
-                            const Color(0xff07224D).withValues(alpha: .80),
-                            Colors.black.withValues(alpha: .55),
+                            AppColors.navyBlue.withValues(alpha: .92),
+                            AppColors.navyBlue.withValues(alpha: .80),
+                            AppColors.deepNavy.withValues(alpha: .55),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -154,7 +157,7 @@ class HeroSection extends StatelessWidget {
             /// ========================================================
             Container(
               width: double.infinity,
-              color: const Color(0xffF5F7FA),
+              color: AppColors.white,
               padding: EdgeInsets.symmetric(
                 horizontal: isMobile ? 16 : 35,
                 vertical: 40,
@@ -186,7 +189,7 @@ class HeroSection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
           decoration: BoxDecoration(
-            color: const Color(0xffFDB913),
+            color: AppColors.orange,
             borderRadius: BorderRadius.circular(30),
           ),
           child: DynamicText(
@@ -205,7 +208,7 @@ class HeroSection extends StatelessWidget {
           textAlign: isDesktop ? TextAlign.left : TextAlign.center,
           style: AppTextStyles.oswald800(
             fontSize: AppFontSize.fs44,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
 
@@ -221,7 +224,7 @@ class HeroSection extends StatelessWidget {
             textAlign: isDesktop ? TextAlign.left : TextAlign.center,
             style: AppTextStyles.barlow300(
               fontSize: AppFontSize.fs24,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
         ),
@@ -253,55 +256,61 @@ class HeroSection extends StatelessWidget {
         /// ============================================================
         /// CALL NOW
         /// ============================================================
-        Container(
-          width: isDesktop ? 360 : double.infinity,
-          constraints: const BoxConstraints(maxWidth: 360),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-          decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xffFDB913), width: 2),
-            borderRadius: BorderRadius.circular(16),
-            color: const Color(0xff0A2A63).withValues(alpha: .55),
-          ),
-          child: Row(
-            mainAxisAlignment: isDesktop
-                ? MainAxisAlignment.start
-                : MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 60,
-                width: 60,
-                decoration: const BoxDecoration(
-                  color: Color(0xffFDB913),
-                  shape: BoxShape.circle,
+        InkWell(
+          onTap: () {
+            final call = CallUsButton();
+            call.handleCall(context);
+          },
+          child: Container(
+            width: isDesktop ? 360 : double.infinity,
+            constraints: const BoxConstraints(maxWidth: 360),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.orange, width: 2),
+              borderRadius: BorderRadius.circular(16),
+              color: AppColors.navyBlue.withValues(alpha: .35),
+            ),
+            child: Row(
+              mainAxisAlignment: isDesktop
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: const BoxDecoration(
+                    color: AppColors.orange,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.call, size: 30),
                 ),
-                child: const Icon(Icons.call, size: 30),
-              ),
 
-              const SizedBox(width: 18),
+                const SizedBox(width: 18),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DynamicText(
-                    "Call Now:",
-                    style: AppTextStyles.barlow400(
-                      fontSize: AppFontSize.fs20,
-                      color: Colors.white,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DynamicText(
+                      "Call Now:",
+                      style: AppTextStyles.barlow400(
+                        fontSize: AppFontSize.fs20,
+                        color: AppColors.white,
+                      ),
                     ),
-                  ),
 
-                  const SizedBox(height: 5),
+                    const SizedBox(height: 5),
 
-                  DynamicText(
-                    "+91 988 363 2477",
-                    style: AppTextStyles.barlow600(
-                      fontSize: AppFontSize.fs26,
-                      color: Colors.white,
+                    DynamicText(
+                      "+91 988 363 2477",
+                      style: AppTextStyles.barlow600(
+                        fontSize: AppFontSize.fs26,
+                        color: AppColors.white,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -317,17 +326,17 @@ class HeroSection extends StatelessWidget {
       height: 620,
       width: width ?? 470,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: .25),
+            color: AppColors.deepNavy.withValues(alpha: .25),
             blurRadius: 25,
             offset: const Offset(0, 15),
           ),
         ],
       ),
-      child: const QuoteForm(),
+      child: QuoteForm(),
     );
   }
 }

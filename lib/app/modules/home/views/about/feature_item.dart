@@ -1,3 +1,4 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
@@ -17,7 +18,7 @@ class FeatureItem extends StatelessWidget {
           height: 34,
           width: 34,
           decoration: const BoxDecoration(
-            color: Color(0xffFDB913),
+            color: AppColors.orange,
             shape: BoxShape.circle,
           ),
           child: const Icon(Icons.check, color: Colors.black, size: 20),
@@ -27,7 +28,7 @@ class FeatureItem extends StatelessWidget {
           title,
           style: AppTextStyles.barlow600(
             fontSize: AppFontSize.fs18,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
       ],

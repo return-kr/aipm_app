@@ -1,8 +1,10 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/data/city_model.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/modules/home/views/service_area.dart/city_card.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/call_us_button.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -18,7 +20,7 @@ class ServiceAreasSection extends StatelessWidget {
     return Container(
       key: controller.serviceAreasKey,
       width: double.infinity,
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 80),
       child: Center(
         child: ConstrainedBox(
@@ -29,7 +31,7 @@ class ServiceAreasSection extends StatelessWidget {
                 "SERVICE AREAS",
                 style: AppTextStyles.barlow700(
                   fontSize: AppFontSize.fs16,
-                  color: Colors.blue.shade800,
+                  color: AppColors.blue,
                 ),
               ),
 
@@ -40,7 +42,7 @@ class ServiceAreasSection extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: AppTextStyles.oswald800(
                   fontSize: AppFontSize.fs38,
-                  color: Colors.black87,
+                  color: AppColors.deepNavy,
                 ),
               ),
 
@@ -61,7 +63,10 @@ class ServiceAreasSection extends StatelessWidget {
               const SizedBox(height: 40),
 
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  final call = CallUsButton();
+                  call.handleCall(context);
+                },
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 36,
@@ -79,14 +84,14 @@ class ServiceAreasSection extends StatelessWidget {
                       "AND MANY MORE CITIES ACROSS INDIA",
                       style: AppTextStyles.barlow700(
                         fontSize: AppFontSize.fs16,
-                        color: Colors.black87,
+                        color: AppColors.deepNavy,
                       ),
                     ),
                     SizedBox(width: 10),
                     Icon(
                       Icons.arrow_forward,
                       size: 18,
-                      color: Color(0xff141414),
+                      color: AppColors.darkBlue,
                     ),
                   ],
                 ),
