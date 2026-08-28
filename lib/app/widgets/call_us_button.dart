@@ -1,3 +1,6 @@
+import 'package:aipm_app/app/data/app_colors.dart';
+import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -63,7 +66,7 @@ class CallUsButton extends StatelessWidget {
       barrierDismissible: true,
       builder: (context) {
         return Dialog(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -81,13 +84,13 @@ class CallUsButton extends StatelessWidget {
                     width: 65,
                     height: 65,
                     decoration: const BoxDecoration(
-                      color: Color(0xffFDB913),
+                      color: AppColors.orange,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
                       Icons.phone,
                       size: 32,
-                      color: Color(0xff07275B),
+                      color: AppColors.deepNavy,
                     ),
                   ),
 
@@ -96,21 +99,23 @@ class CallUsButton extends StatelessWidget {
                   // ==================================================
                   // TITLE
                   // ==================================================
-                  const Text(
+                  Text(
                     "Call Us",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff07275B),
+                    style: AppTextStyles.oswald800(
+                      fontSize: AppFontSize.fs26,
+                      color: AppColors.deepNavy,
                     ),
                   ),
 
                   const SizedBox(height: 8),
 
-                  const Text(
+                  Text(
                     "Scan the QR code with your mobile",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                    style: AppTextStyles.barlow500(
+                      fontSize: AppFontSize.fs16,
+                      color: Colors.grey,
+                    ),
                   ),
 
                   const SizedBox(height: 24),
@@ -120,10 +125,9 @@ class CallUsButton extends StatelessWidget {
                   // ==================================================
                   Text(
                     phoneNumber,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff07275B),
+                    style: AppTextStyles.oswald800(
+                      fontSize: AppFontSize.fs26,
+                      color: AppColors.deepNavy,
                     ),
                   ),
 
@@ -135,7 +139,7 @@ class CallUsButton extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: Colors.grey.shade300),
                     ),
@@ -143,17 +147,20 @@ class CallUsButton extends StatelessWidget {
                       data: 'tel:$_cleanNumber',
                       version: QrVersions.auto,
                       size: 200,
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppColors.white,
                       errorCorrectionLevel: QrErrorCorrectLevel.M,
                     ),
                   ),
 
                   const SizedBox(height: 20),
 
-                  const Text(
+                  Text(
                     "Scan this code to open the phone dialer",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, color: Colors.black54),
+                    style: AppTextStyles.barlow500(
+                      fontSize: AppFontSize.fs16,
+                      color: Colors.grey,
+                    ),
                   ),
 
                   const SizedBox(height: 25),
@@ -169,16 +176,19 @@ class CallUsButton extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff07275B),
-                        foregroundColor: Colors.white,
+                        backgroundColor: AppColors.navyBlue,
+                        foregroundColor: AppColors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: const Text(
+                      child: Text(
                         "CLOSE",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: AppTextStyles.barlow500(
+                          fontSize: AppFontSize.fs16,
+                          color: AppColors.white,
+                        ),
                       ),
                     ),
                   ),

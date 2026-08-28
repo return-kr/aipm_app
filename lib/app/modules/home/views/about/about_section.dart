@@ -1,13 +1,15 @@
 import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/modules/home/views/about/why_choose_card.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/call_us_button.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:aipm_app/app/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/route_manager.dart';
 
 class AboutSection extends StatelessWidget {
   AboutSection({super.key});
@@ -150,7 +152,10 @@ class AboutSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                final call = CallUsButton();
+                call.handleCall(Get.context as BuildContext);
+              },
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -185,8 +190,8 @@ class AboutSection extends StatelessWidget {
   Widget _aboutImage({required double height}) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(18),
-      child: Image.network(
-        "https://picsum.photos/500/700",
+      child: Image.asset(
+        AppImages.whyImage,
         width: double.infinity,
         height: height,
         fit: BoxFit.cover,

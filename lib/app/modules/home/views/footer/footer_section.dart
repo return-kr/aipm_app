@@ -1,5 +1,6 @@
 import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
 import 'package:aipm_app/app/widgets/call_us_button.dart';
@@ -37,7 +38,7 @@ class FooterSection extends StatelessWidget {
       children: [
         Row(
           children: [
-            Image.network("https://picsum.photos/60", width: 55, height: 55),
+            Image.asset(AppImages.logo, width: 55, height: 55),
 
             const SizedBox(width: 10),
 

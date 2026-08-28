@@ -1,5 +1,6 @@
 import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
+import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/modules/home/views/about/feature_item.dart';
 import 'package:aipm_app/app/modules/home/views/hero/quote_form.dart';
@@ -33,8 +34,8 @@ class HeroSection extends StatelessWidget {
               children: [
                 /// Background Image
                 Positioned.fill(
-                  child: Image.network(
-                    "https://picsum.photos/1920/1080",
+                  child: Image.asset(
+                    AppImages.heroImage,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -109,8 +110,8 @@ class HeroSection extends StatelessWidget {
                 children: [
                   /// Background Image
                   Positioned.fill(
-                    child: Image.network(
-                      "https://picsum.photos/1920/1080",
+                    child: Image.asset(
+                      AppImages.heroImage,
                       fit: BoxFit.cover,
                     ),
                   ),

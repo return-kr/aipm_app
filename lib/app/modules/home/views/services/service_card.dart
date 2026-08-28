@@ -73,7 +73,7 @@ class ServiceCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
               child: AspectRatio(
                 aspectRatio: 0.82,
-                child: Image.network(service.image, fit: BoxFit.cover),
+                child: Image.asset(service.image, fit: BoxFit.cover),
               ),
             ),
           ),
@@ -120,7 +120,7 @@ class ServiceCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(14),
             child: AspectRatio(
               aspectRatio: isMobile ? 16 / 9 : 16 / 7,
-              child: Image.network(
+              child: Image.asset(
                 service.image,
                 width: double.infinity,
                 fit: BoxFit.cover,

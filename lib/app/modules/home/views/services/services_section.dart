@@ -1,3 +1,4 @@
+import 'package:aipm_app/app/data/app_colors.dart';
 import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/data/service_model.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
@@ -21,7 +22,7 @@ class ServicesSection extends StatelessWidget {
         return Container(
           key: controller.servicesKey,
           width: double.infinity,
-          color: const Color(0xffFAFBFD),
+          color: AppColors.white,
           padding: EdgeInsets.symmetric(
             horizontal: isMobile ? 20 : 35,
             vertical: isDesktop ? 80 : 60,
@@ -40,7 +41,7 @@ class ServicesSection extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: AppTextStyles.barlow700(
                       fontSize: AppFontSize.fs16,
-                      color: Colors.blue.shade800,
+                      color: AppColors.blue,
                     ),
                   ),
 
@@ -54,7 +55,7 @@ class ServicesSection extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: AppTextStyles.oswald800(
                       fontSize: AppFontSize.fs38,
-                      color: Colors.black87,
+                      color: AppColors.deepNavy,
                     ),
                   ),
 

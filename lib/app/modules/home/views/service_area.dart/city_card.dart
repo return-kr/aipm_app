@@ -38,7 +38,7 @@ class CityCard extends StatelessWidget {
               ),
               child: AspectRatio(
                 aspectRatio: 2.3,
-                child: Image.network(city.image, fit: BoxFit.cover),
+                child: Image.asset(city.image, fit: BoxFit.cover),
               ),
             ),
 
