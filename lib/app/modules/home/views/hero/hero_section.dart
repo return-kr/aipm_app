@@ -34,10 +34,7 @@ class HeroSection extends StatelessWidget {
               children: [
                 /// Background Image
                 Positioned.fill(
-                  child: Image.asset(
-                    AppImages.heroImage,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.heroImage, fit: BoxFit.cover),
                 ),
 
                 /// Dark Overlay
@@ -80,7 +77,7 @@ class HeroSection extends StatelessWidget {
                             flex: 4,
                             child: Align(
                               alignment: Alignment.centerRight,
-                              child: _quoteForm(),
+                              child: _quoteForm(isDesktop: true),
                             ),
                           ),
                         ],
@@ -105,15 +102,12 @@ class HeroSection extends StatelessWidget {
             /// ========================================================
             SizedBox(
               width: double.infinity,
-              height: isMobile ? 700 : 720,
+              height: isMobile ? null : 720,
               child: Stack(
                 children: [
                   /// Background Image
                   Positioned.fill(
-                    child: Image.asset(
-                      AppImages.heroImage,
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.asset(AppImages.heroImage, fit: BoxFit.cover),
                   ),
 
                   /// Dark Overlay
@@ -134,18 +128,14 @@ class HeroSection extends StatelessWidget {
                   ),
 
                   /// CENTERED LEFT CONTENT
-                  Center(
-                    child: SingleChildScrollView(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: isMobile ? 20 : 40,
-                        vertical: 40,
-                      ),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: isMobile ? 600 : 750,
-                        ),
-                        child: _heroLeftContent(context, isDesktop: false),
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 40),
+                        _heroLeftContent(context, isDesktop: false),
+                        SizedBox(height: 40),
+                      ],
                     ),
                   ),
                 ],
@@ -163,7 +153,10 @@ class HeroSection extends StatelessWidget {
                 vertical: 40,
               ),
               child: Center(
-                child: _quoteForm(width: isMobile ? double.infinity : 600),
+                child: _quoteForm(
+                  isDesktop: false,
+                  width: isMobile ? double.infinity : 600,
+                ),
               ),
             ),
           ],
@@ -321,7 +314,7 @@ class HeroSection extends StatelessWidget {
   // QUOTE FORM
   // ==================================================================
 
-  Widget _quoteForm({double? width}) {
+  Widget _quoteForm({double? width, required bool isDesktop}) {
     return Container(
       height: 620,
       width: width ?? 470,
@@ -336,7 +329,7 @@ class HeroSection extends StatelessWidget {
           ),
         ],
       ),
-      child: QuoteForm(),
+      child: QuoteForm(isDesktop: isDesktop),
     );
   }
 }

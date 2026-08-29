@@ -8,8 +8,9 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/route_manager.dart';
 
 class QuoteForm extends StatelessWidget {
-  QuoteForm({super.key});
+  QuoteForm({super.key, required this.isDesktop});
 
+  final bool isDesktop;
   final controller = Get.find<HomeController>();
 
   Widget _input({
@@ -131,106 +132,217 @@ class QuoteForm extends StatelessWidget {
         ),
 
         /// Scrollable Body
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(28),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _input(
-                  icon: Icons.person_outline,
-                  label: "Name",
-                  hint: "Your Name",
-                  controller: controller.nameController,
-                ),
-
-                const SizedBox(height: 18),
-
-                _input(
-                  icon: Icons.call_outlined,
-                  label: "Phone Number",
-                  hint: "Your Phone Number",
-                  controller: controller.phoneController,
-                ),
-
-                const SizedBox(height: 18),
-
-                _input(
-                  icon: Icons.location_on_outlined,
-                  label: "Pickup Location",
-                  hint: "From (City/Address)",
-                  controller: controller.fromController,
-                ),
-
-                const SizedBox(height: 18),
-
-                _input(
-                  icon: Icons.location_on_outlined,
-                  label: "Destination Location",
-                  hint: "To (City/Address)",
-                  controller: controller.toController,
-                ),
-
-                const SizedBox(height: 18),
-
-                _input(
-                  icon: Icons.calendar_month_outlined,
-                  label: "Moving Date",
-                  hint: "Select Moving Date",
-                  suffix: Icons.calendar_today_outlined,
-                  controller: controller.dateController,
-                ),
-
-                const SizedBox(height: 30),
-
-                SizedBox(
-                  width: double.infinity,
-                  height: 58,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      controller.sendQuoteEmail().then((success) {
-                        if (success) {
-                          ScaffoldMessenger.of(
-                            Get.context as BuildContext,
-                          ).showSnackBar(
-                            const SnackBar(
-                              content: Text('Quote request sent successfully!'),
-                              backgroundColor: Colors.green,
-                            ),
-                          );
-                        } else {
-                          ScaffoldMessenger.of(
-                            Get.context as BuildContext,
-                          ).showSnackBar(
-                            const SnackBar(
-                              content: Text('Failed to send quote request.'),
-                              backgroundColor: Colors.red,
-                            ),
-                          );
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      backgroundColor: AppColors.orange,
-                      foregroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+        isDesktop
+            ? Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(28),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _input(
+                        icon: Icons.person_outline,
+                        label: "Name",
+                        hint: "Your Name",
+                        controller: controller.nameController,
                       ),
-                    ),
-                    child: DynamicText(
-                      "SUBMIT REQUEST",
-                      style: AppTextStyles.barlow700(
-                        fontSize: AppFontSize.fs18,
-                        color: AppColors.deepNavy,
+
+                      const SizedBox(height: 18),
+
+                      _input(
+                        icon: Icons.call_outlined,
+                        label: "Phone Number",
+                        hint: "Your Phone Number",
+                        controller: controller.phoneController,
                       ),
-                    ),
+
+                      const SizedBox(height: 18),
+
+                      _input(
+                        icon: Icons.location_on_outlined,
+                        label: "Pickup Location",
+                        hint: "From (City/Address)",
+                        controller: controller.fromController,
+                      ),
+
+                      const SizedBox(height: 18),
+
+                      _input(
+                        icon: Icons.location_on_outlined,
+                        label: "Destination Location",
+                        hint: "To (City/Address)",
+                        controller: controller.toController,
+                      ),
+
+                      const SizedBox(height: 18),
+
+                      _input(
+                        icon: Icons.calendar_month_outlined,
+                        label: "Moving Date",
+                        hint: "Select Moving Date",
+                        suffix: Icons.calendar_today_outlined,
+                        controller: controller.dateController,
+                      ),
+
+                      const SizedBox(height: 30),
+
+                      SizedBox(
+                        width: double.infinity,
+                        height: 58,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            controller.sendQuoteEmail().then((success) {
+                              if (success) {
+                                ScaffoldMessenger.of(
+                                  Get.context as BuildContext,
+                                ).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Quote request sent successfully!',
+                                    ),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(
+                                  Get.context as BuildContext,
+                                ).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Failed to send quote request.',
+                                    ),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              }
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            backgroundColor: AppColors.orange,
+                            foregroundColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: DynamicText(
+                            "SUBMIT REQUEST",
+                            style: AppTextStyles.barlow700(
+                              fontSize: AppFontSize.fs18,
+                              color: AppColors.deepNavy,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(
+                  left: 14.0,
+                  right: 14.0,
+                  top: 12,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _input(
+                      icon: Icons.person_outline,
+                      label: "Name",
+                      hint: "Your Name",
+                      controller: controller.nameController,
+                    ),
+
+                    const SizedBox(height: 18),
+
+                    _input(
+                      icon: Icons.call_outlined,
+                      label: "Phone Number",
+                      hint: "Your Phone Number",
+                      controller: controller.phoneController,
+                    ),
+
+                    const SizedBox(height: 18),
+
+                    _input(
+                      icon: Icons.location_on_outlined,
+                      label: "Pickup Location",
+                      hint: "From (City/Address)",
+                      controller: controller.fromController,
+                    ),
+
+                    const SizedBox(height: 18),
+
+                    _input(
+                      icon: Icons.location_on_outlined,
+                      label: "Destination Location",
+                      hint: "To (City/Address)",
+                      controller: controller.toController,
+                    ),
+
+                    const SizedBox(height: 18),
+
+                    _input(
+                      icon: Icons.calendar_month_outlined,
+                      label: "Moving Date",
+                      hint: "Select Moving Date",
+                      suffix: Icons.calendar_today_outlined,
+                      controller: controller.dateController,
+                    ),
+
+                    const SizedBox(height: 30),
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 58,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.sendQuoteEmail().then((success) {
+                            if (success) {
+                              ScaffoldMessenger.of(
+                                Get.context as BuildContext,
+                              ).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Quote request sent successfully!',
+                                  ),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(
+                                Get.context as BuildContext,
+                              ).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Failed to send quote request.',
+                                  ),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: AppColors.orange,
+                          foregroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: DynamicText(
+                          "SUBMIT REQUEST",
+                          style: AppTextStyles.barlow700(
+                            fontSize: AppFontSize.fs18,
+                            color: AppColors.deepNavy,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
       ],
     );
   }
