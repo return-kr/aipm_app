@@ -130,7 +130,7 @@ class FooterSection extends StatelessWidget {
 
         const SizedBox(height: 5),
 
-        _contact(Icons.email_outlined, "info@example.com"),
+        _contact(Icons.email_outlined, "somendranathroy17@gmail.com"),
 
         const SizedBox(height: 5),
 

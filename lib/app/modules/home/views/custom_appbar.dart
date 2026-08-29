@@ -3,6 +3,7 @@ import 'package:aipm_app/app/data/app_font_size.dart';
 import 'package:aipm_app/app/data/app_images.dart';
 import 'package:aipm_app/app/modules/home/controllers/home_controller.dart';
 import 'package:aipm_app/app/theme/app_text_styles.dart';
+import 'package:aipm_app/app/widgets/call_us_button.dart';
 import 'package:aipm_app/app/widgets/dynamic_text.dart';
 import 'package:aipm_app/app/widgets/responsive_wrapper.dart';
 import 'package:flutter/material.dart';
@@ -308,29 +309,37 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
 
                     /// DRAWER FOOTER
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: const BoxDecoration(
-                        border: Border(top: BorderSide(color: AppColors.blue)),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.phone_outlined,
-                            color: AppColors.blue,
-                            size: 22,
+                    InkWell(
+                      onTap: () {
+                        final call = CallUsButton();
+                        call.handleCall(context);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: AppColors.blue),
                           ),
-
-                          const SizedBox(width: 10),
-
-                          DynamicText(
-                            "+91 988 363 2477",
-                            style: AppTextStyles.barlow700(
-                              fontSize: AppFontSize.fs15,
-                              color: AppColors.navyBlue,
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.phone_outlined,
+                              color: AppColors.blue,
+                              size: 22,
                             ),
-                          ),
-                        ],
+
+                            const SizedBox(width: 10),
+
+                            DynamicText(
+                              "+91 988 363 2477",
+                              style: AppTextStyles.barlow700(
+                                fontSize: AppFontSize.fs15,
+                                color: AppColors.navyBlue,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
